@@ -29,7 +29,7 @@ export default function Home() {
         <div className="relative mx-auto flex min-h-[92vh] max-w-6xl flex-col justify-center px-6 py-24">
           <div className="mb-8">
             <Image
-              src="/LOGO_VERTICAL .jpg"
+              src="/LOGO_VERTICAL .png"
               alt="SpinCulture3D logo"
               width={500}
               height={500}
