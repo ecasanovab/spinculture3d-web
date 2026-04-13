@@ -120,8 +120,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="px-6 py-24">
-        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
+      <section id="about" className="relative overflow-hidden px-6 py-24">
+        <div className="absolute inset-0">
+          <Image
+            src="/foto_treballant.jpg"
+            alt=""
+            fill
+            className="object-cover object-center"
+          />
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.78),rgba(244,252,253,0.72))]" />
+
+        <div className="relative mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
               About Us
@@ -131,7 +141,7 @@ export default function Home() {
               About SpinCulture
             </h2>
 
-            <div className="mt-6 space-y-6 text-lg leading-8 text-[#216674]">
+            <div className="mt-6 space-y-6 text-lg leading-8 text-[#216674] md:text-justify">
               <p>
                 At SpinCulture, our mission is to help move{" "}
                 <strong>cell culture beyond traditional 2D systems</strong> and
@@ -142,6 +152,16 @@ export default function Home() {
                 fibrous 3D environments that better reflect physiological
                 conditions.
               </p>
+
+              <div className="flex justify-center py-2">
+                <Image
+                  src="/LOGO SOL.png"
+                  alt="SpinCulture logo"
+                  width={760}
+                  height={760}
+                  className="h-[28rem] w-auto object-contain opacity-95"
+                />
+              </div>
 
               <p>
                 Our work began with the goal of developing improved cancer
@@ -157,7 +177,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-[#b9e7f0] bg-[#f4fcfd] p-8 md:p-10">
+          <div className="rounded-[2rem] border border-[#b9e7f0] bg-white/78 p-8 backdrop-blur-[2px] md:p-10">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
               Vision
             </p>
@@ -166,86 +186,76 @@ export default function Home() {
               A new step in cell culture: SpinCulture.
             </h3>
 
-            <p className="mt-6 text-lg leading-8 text-[#216674]">
+            <p className="mt-6 text-lg leading-8 text-[#216674] md:text-justify">
               SpinCulture is conceived as a bridge between conventional 2D
               culture and more complex biological models, enabling more
               relevant, scalable, and accessible in vitro research
               environments.
             </p>
 
-            <div className="mt-10 grid grid-cols-2 gap-4">
-              <div className="relative overflow-hidden rounded-2xl border border-[#b9e7f0] bg-white">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: "url('/SEM_image.png')" }}
-                />
-                <div className="relative flex min-h-[220px] flex-col justify-between p-5">
-                  <p className="pt-2 text-center text-sm font-medium text-[#028aac]">
-                    Approach
-                  </p>
-                  <div className="max-w-[85%] rounded-2xl bg-white/92 p-4 shadow-sm backdrop-blur-sm">
-                    <p className="font-semibold text-[#014b5c]">
-                      Electrospinning-based 3D culture
-                    </p>
-                  </div>
+            <div className="mt-10 grid grid-cols-2 gap-6">
+              <div className="flex h-full flex-col rounded-2xl bg-white/90 p-5">
+                <p className="text-base font-medium text-[#014b5c]">Approach</p>
+                <div className="mt-4 overflow-hidden rounded-xl">
+                  <Image
+                    src="/SEM_image_cropped.png"
+                    alt="Approach"
+                    width={600}
+                    height={420}
+                    className="h-44 w-full object-cover"
+                  />
                 </div>
+                <p className="mt-4 text-xl leading-8 text-[#014b5c]">
+                  Electrospinning based 3D culture
+                </p>
               </div>
 
-              <div className="relative overflow-hidden rounded-2xl border border-[#b9e7f0] bg-white">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: "url('/Confocal_image.jpg')" }}
-                />
-                <div className="relative flex min-h-[220px] flex-col justify-between p-5">
-                  <p className="pt-2 text-center text-sm font-medium text-[#028aac]">
-                    Focus
-                  </p>
-                  <div className="max-w-[85%] rounded-2xl bg-white/92 p-4 shadow-sm backdrop-blur-sm">
-                    <p className="font-semibold text-[#014b5c]">
-                      Physiological relevance
-                    </p>
-                  </div>
+              <div className="flex h-full flex-col rounded-2xl bg-white/90 p-5">
+                <p className="text-base font-medium text-[#014b5c]">Focus</p>
+                <div className="mt-4 overflow-hidden rounded-xl">
+                  <Image
+                    src="/Confocal_image.jpg"
+                    alt="Focus"
+                    width={600}
+                    height={420}
+                    className="h-44 w-full object-cover"
+                  />
                 </div>
+                <p className="mt-4 text-xl leading-8 text-[#014b5c]">
+                  Physiological relevance
+                </p>
               </div>
 
-              <div className="relative overflow-hidden rounded-2xl border border-[#b9e7f0] bg-white">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage:
-                      "url('/Predictive_research_models_image.png')",
-                  }}
-                />
-                <div className="relative flex min-h-[220px] flex-col justify-between p-5">
-                  <p className="pt-2 text-center text-sm font-medium text-[#028aac]">
-                    Goal
-                  </p>
-                  <div className="max-w-[85%] rounded-2xl bg-white/92 p-4 shadow-sm backdrop-blur-sm">
-                    <p className="font-semibold text-[#014b5c]">
-                      Predictive research models
-                    </p>
-                  </div>
+              <div className="flex h-full flex-col rounded-2xl bg-white/90 p-5">
+                <p className="text-base font-medium text-[#014b5c]">Goal</p>
+                <div className="mt-4 overflow-hidden rounded-xl">
+                  <Image
+                    src="/Predictive_research_models_image.png"
+                    alt="Goal"
+                    width={600}
+                    height={420}
+                    className="h-44 w-full object-cover"
+                  />
                 </div>
+                <p className="mt-4 text-xl leading-8 text-[#014b5c]">
+                  Predictive research models
+                </p>
               </div>
 
-              <div className="relative overflow-hidden rounded-2xl border border-[#b9e7f0] bg-white">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage:
-                      "url('/Reduce_animal_testing_image.png')",
-                  }}
-                />
-                <div className="relative flex min-h-[220px] flex-col justify-between p-5">
-                  <p className="pt-2 text-center text-sm font-medium text-[#028aac]">
-                    Impact
-                  </p>
-                  <div className="max-w-[85%] rounded-2xl bg-white/92 p-4 shadow-sm backdrop-blur-sm">
-                    <p className="font-semibold text-[#014b5c]">
-                      Reduce Animal model
-                    </p>
-                  </div>
+              <div className="flex h-full flex-col rounded-2xl bg-white/90 p-5">
+                <p className="text-base font-medium text-[#014b5c]">Impact</p>
+                <div className="mt-4 flex min-h-[176px] items-center justify-center overflow-hidden rounded-xl bg-[#f8fdfe] p-2">
+                  <Image
+                    src="/Reduce_animal_testing_image_cropped.png"
+                    alt="Impact"
+                    width={600}
+                    height={420}
+                    className="h-auto w-full object-contain"
+                  />
                 </div>
+                <p className="mt-4 text-xl leading-8 text-[#014b5c]">
+                  Reduce Animal model
+                </p>
               </div>
             </div>
           </div>
@@ -264,7 +274,7 @@ export default function Home() {
           <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <h2 className="text-3xl font-semibold md:text-4xl">What we do</h2>
-              <div className="mt-4 max-w-4xl space-y-5 text-[#216674]">
+              <div className="mt-4 max-w-4xl space-y-5 text-[#216674] md:text-justify">
                 <p>
                   <strong>
                     SpinCulture&apos;s technology is based on electrospinning
@@ -391,7 +401,7 @@ export default function Home() {
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               <article className="rounded-3xl border border-[#b9e7f0] bg-white p-8 shadow-sm">
                 <h3 className="text-xl font-semibold">Advanced Cell Culture</h3>
-                <p className="mt-4 leading-7 text-[#216674]">
+                <p className="mt-4 leading-7 text-[#216674] md:text-justify">
                   Fibrous structures designed to support more representative and
                   functional cell culture environments.
                 </p>
@@ -401,7 +411,7 @@ export default function Home() {
                 <h3 className="text-xl font-semibold">
                   Validated Across Cell Models
                 </h3>
-                <p className="mt-4 leading-7 text-[#216674]">
+                <p className="mt-4 leading-7 text-[#216674] md:text-justify">
                   Our platform has been validated across different cell lines,
                   enabling the development of in vitro models for breast and
                   lung cancer, adipocytes, hepatoma, etc.
@@ -410,7 +420,7 @@ export default function Home() {
 
               <article className="rounded-3xl border border-[#b9e7f0] bg-white p-8 shadow-sm">
                 <h3 className="text-xl font-semibold">Drug Screening Support</h3>
-                <p className="mt-4 leading-7 text-[#216674]">
+                <p className="mt-4 leading-7 text-[#216674] md:text-justify">
                   Engineered systems that can contribute to more reliable
                   preclinical testing environments.
                 </p>
@@ -420,7 +430,7 @@ export default function Home() {
                 <h3 className="text-xl font-semibold">
                   Customizable R&amp;D Platforms
                 </h3>
-                <p className="mt-4 leading-7 text-[#216674]">
+                <p className="mt-4 leading-7 text-[#216674] md:text-justify">
                   Flexible solutions designed to support customizable studies
                   for validation, testing, and applied bioengineering research.
                 </p>
@@ -430,8 +440,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="border-t border-[#b9e7f0] bg-white px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+      <section
+        id="services"
+        className="relative overflow-hidden border-t border-[#b9e7f0] px-6 py-24"
+      >
+        <div className="absolute inset-0">
+          <Image
+            src="/foto_plaques_100.jpg"
+            alt=""
+            fill
+            className="object-cover object-center"
+          />
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.80),rgba(244,252,253,0.74))]" />
+
+        <div className="relative mx-auto max-w-6xl">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
             Services
           </p>
@@ -441,7 +464,7 @@ export default function Home() {
               <h2 className="text-3xl font-semibold md:text-4xl">
                 Services in definition
               </h2>
-              <p className="mt-4 max-w-2xl text-[#216674]">
+              <p className="mt-4 max-w-2xl text-[#216674] md:text-justify">
                 This section is reserved for service lines that will be defined
                 in more detail soon. For now, the layout stays ready so the
                 browsing order already matches the final structure.
@@ -450,31 +473,31 @@ export default function Home() {
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <article className="rounded-3xl border border-[#b9e7f0] bg-[#f4fcfd] p-8">
+            <article className="rounded-3xl border border-[#b9e7f0] bg-white/82 p-8 backdrop-blur-[2px]">
               <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
                 Consulting
               </p>
-              <p className="mt-4 leading-7 text-[#216674]">
+              <p className="mt-4 leading-7 text-[#216674] md:text-justify">
                 Placeholder for scientific advisory, development strategy, and
                 technical guidance.
               </p>
             </article>
 
-            <article className="rounded-3xl border border-[#b9e7f0] bg-[#f4fcfd] p-8">
+            <article className="rounded-3xl border border-[#b9e7f0] bg-white/82 p-8 backdrop-blur-[2px]">
               <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
                 Development
               </p>
-              <p className="mt-4 leading-7 text-[#216674]">
+              <p className="mt-4 leading-7 text-[#216674] md:text-justify">
                 Placeholder for tailored platform development and experimental
                 implementation.
               </p>
             </article>
 
-            <article className="rounded-3xl border border-[#b9e7f0] bg-[#f4fcfd] p-8">
+            <article className="rounded-3xl border border-[#b9e7f0] bg-white/82 p-8 backdrop-blur-[2px]">
               <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
                 Collaboration
               </p>
-              <p className="mt-4 leading-7 text-[#216674]">
+              <p className="mt-4 leading-7 text-[#216674] md:text-justify">
                 Placeholder for research partnerships, pilot projects, and
                 translational opportunities.
               </p>
@@ -496,14 +519,14 @@ export default function Home() {
             <h2 className="text-3xl font-semibold md:text-4xl">
               Product section coming soon
             </h2>
-            <p className="mt-4 max-w-2xl text-[#216674]">
+            <p className="mt-4 max-w-2xl text-[#216674] md:text-justify">
               This area is intentionally reserved for future product
               definitions, prototypes, and structured offers.
             </p>
           </div>
 
           <div className="mt-12 rounded-[2rem] border border-dashed border-[#8ad5e5] bg-white p-10">
-            <p className="max-w-3xl text-lg leading-8 text-[#216674]">
+            <p className="max-w-3xl text-lg leading-8 text-[#216674] md:text-justify">
               Once products are defined, this section can host catalog cards,
               scientific platform summaries, downloadable materials, or direct
               links to individual product pages.
@@ -525,7 +548,7 @@ export default function Home() {
             <h2 className="text-3xl font-semibold md:text-4xl">
               The people behind SpinCulture3D
             </h2>
-            <p className="max-w-2xl text-[#216674]">
+            <p className="max-w-2xl text-[#216674] md:text-justify">
               A multidisciplinary team combining biomedical engineering and
               biology to create meaningful tools for research and innovation.
             </p>
@@ -542,7 +565,7 @@ export default function Home() {
               <h3 className="mt-3 text-2xl font-semibold">
                 Biomedical Engineer
               </h3>
-              <p className="mt-4 leading-7 text-[#216674]">
+              <p className="mt-4 leading-7 text-[#216674] md:text-justify">
                 Focused on the design and development of advanced biomedical
                 structures, bridging fabrication strategies, translational
                 thinking, and functional research applications.
@@ -557,7 +580,7 @@ export default function Home() {
                 Team Member
               </p>
               <h3 className="mt-3 text-2xl font-semibold">Biologist</h3>
-              <p className="mt-4 leading-7 text-[#216674]">
+              <p className="mt-4 leading-7 text-[#216674] md:text-justify">
                 Bringing expertise in living systems, cellular environments, and
                 biological relevance to ensure each platform is grounded in real
                 scientific and experimental needs.
@@ -577,7 +600,7 @@ export default function Home() {
             <h2 className="text-3xl font-semibold md:text-4xl">
               Updates section in preparation
             </h2>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-[#216674]">
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-[#216674] md:text-justify">
               This placeholder keeps the site structure ready for future news,
               announcements, milestones, and scientific updates.
             </p>
@@ -598,7 +621,7 @@ export default function Home() {
             Let's build something meaningful together
           </h2>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d8f2f7]">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d8f2f7] md:text-justify">
             We are shaping the first version of SpinCulture3D. Get in touch to
             explore ideas, collaborations, or future opportunities.
           </p>
