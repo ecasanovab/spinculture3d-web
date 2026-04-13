@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 
 export default function Home() {
   return (
@@ -23,13 +23,13 @@ export default function Home() {
             <a href="#about" className="transition hover:text-[#014b5c]">
               About Us
             </a>
-            <a href="#services" className="transition hover:text-[#014b5c]">
+            <a href="#technology" className="transition hover:text-[#014b5c]">
               Technology
             </a>
             <a href="#services" className="transition hover:text-[#014b5c]">
               Services
             </a>
-            <a href="#about" className="transition hover:text-[#014b5c]">
+            <a href="#products" className="transition hover:text-[#014b5c]">
               Products
             </a>
 
@@ -50,7 +50,7 @@ export default function Home() {
                   Team
                 </a>
                 <a
-                  href="#"
+                  href="#news"
                   className="mt-1 block rounded-xl px-4 py-2 text-sm text-[#028aac] transition hover:bg-[#eefbfd] hover:text-[#014b5c]"
                 >
                   News
@@ -102,7 +102,7 @@ export default function Home() {
 
               <div className="mt-10 flex flex-wrap justify-center gap-4">
                 <a
-                  href="#services"
+                  href="#technology"
                   className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#028aac] transition hover:bg-[#eefbfd]"
                 >
                   Read about technology
@@ -120,10 +120,317 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="about" className="px-6 py-24">
+        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
+          <div>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
+              About Us
+            </p>
+
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-tight md:text-4xl">
+              About SpinCulture
+            </h2>
+
+            <div className="mt-6 space-y-6 text-lg leading-8 text-[#216674]">
+              <p>
+                At SpinCulture, our mission is to help move{" "}
+                <strong>cell culture beyond traditional 2D systems</strong> and
+                make 3D culture more accessible, scalable, and affordable. More
+                importantly, we aim to establish the{" "}
+                <strong>SpinCulture concept</strong>: a new approach to cell
+                culture built around electrospinning-based technologies and
+                fibrous 3D environments that better reflect physiological
+                conditions.
+              </p>
+
+              <p>
+                Our work began with the goal of developing improved cancer
+                models and supporting future drug screening with patient-derived
+                cells. Over time, we have shown that cells cultured on our
+                scaffolds behave in a more physiologically relevant way,
+                highlighting the value of this platform as an intermediate step
+                between conventional 2D culture and animal models. Today, our
+                vision is to expand SpinCulture across many different cell
+                culture applications, helping drive more{" "}
+                <strong>predictive, ethical, and widely accessible research</strong>.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] border border-[#b9e7f0] bg-[#f4fcfd] p-8 md:p-10">
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
+              Vision
+            </p>
+
+            <h3 className="mt-4 text-3xl font-semibold leading-tight text-[#014b5c] md:text-4xl">
+              A new step in cell culture: SpinCulture.
+            </h3>
+
+            <p className="mt-6 text-lg leading-8 text-[#216674]">
+              SpinCulture is conceived as a bridge between conventional 2D
+              culture and more complex biological models, enabling more
+              relevant, scalable, and accessible in vitro research
+              environments.
+            </p>
+
+            <div className="mt-10 grid grid-cols-2 gap-4">
+              <div className="relative overflow-hidden rounded-2xl border border-[#b9e7f0] bg-white">
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: "url('/SEM_image.png')" }}
+                />
+                <div className="relative flex min-h-[220px] flex-col justify-between p-5">
+                  <p className="pt-2 text-center text-sm font-medium text-[#028aac]">
+                    Approach
+                  </p>
+                  <div className="max-w-[85%] rounded-2xl bg-white/92 p-4 shadow-sm backdrop-blur-sm">
+                    <p className="font-semibold text-[#014b5c]">
+                      Electrospinning-based 3D culture
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative overflow-hidden rounded-2xl border border-[#b9e7f0] bg-white">
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: "url('/Confocal_image.jpg')" }}
+                />
+                <div className="relative flex min-h-[220px] flex-col justify-between p-5">
+                  <p className="pt-2 text-center text-sm font-medium text-[#028aac]">
+                    Focus
+                  </p>
+                  <div className="max-w-[85%] rounded-2xl bg-white/92 p-4 shadow-sm backdrop-blur-sm">
+                    <p className="font-semibold text-[#014b5c]">
+                      Physiological relevance
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative overflow-hidden rounded-2xl border border-[#b9e7f0] bg-white">
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage:
+                      "url('/Predictive_research_models_image.png')",
+                  }}
+                />
+                <div className="relative flex min-h-[220px] flex-col justify-between p-5">
+                  <p className="pt-2 text-center text-sm font-medium text-[#028aac]">
+                    Goal
+                  </p>
+                  <div className="max-w-[85%] rounded-2xl bg-white/92 p-4 shadow-sm backdrop-blur-sm">
+                    <p className="font-semibold text-[#014b5c]">
+                      Predictive research models
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative overflow-hidden rounded-2xl border border-[#b9e7f0] bg-white">
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage:
+                      "url('/Reduce_animal_testing_image.png')",
+                  }}
+                />
+                <div className="relative flex min-h-[220px] flex-col justify-between p-5">
+                  <p className="pt-2 text-center text-sm font-medium text-[#028aac]">
+                    Impact
+                  </p>
+                  <div className="max-w-[85%] rounded-2xl bg-white/92 p-4 shadow-sm backdrop-blur-sm">
+                    <p className="font-semibold text-[#014b5c]">
+                      Reduce Animal model
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section
-        id="services"
+        id="technology"
         className="border-t border-[#b9e7f0] bg-[#f4fcfd] px-6 py-24"
       >
+        <div className="mx-auto max-w-6xl">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
+            Technology
+          </p>
+
+          <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="text-3xl font-semibold md:text-4xl">What we do</h2>
+              <div className="mt-4 max-w-4xl space-y-5 text-[#216674]">
+                <p>
+                  <strong>
+                    SpinCulture&apos;s technology is based on electrospinning
+                    as a platform for generating advanced fibrous structures
+                    for applications in bioengineering and biomedical
+                    research.
+                  </strong>
+                </p>
+                <p>
+                  Electrospinning is a manufacturing technology that enables
+                  the production of ultrafine fibers from polymer-based
+                  materials. It enables us to generate structures with high
+                  surface area and controllable morphology, making it
+                  interesting for advanced cell culture systems.
+                </p>
+                <p>
+                  Our technology is focused on a novel electrospinning machine
+                  which allows the design of structures that provide a
+                  microenvironment aligned with the needs of each application,
+                  with particular attention to architecture, reproducibility,
+                  and functional performance.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex justify-center md:min-w-[360px] md:self-center">
+              <a
+                href="/publications"
+                className="inline-flex min-w-[260px] items-center justify-center rounded-full bg-[#028aac] px-8 py-4 text-center text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#017792] md:min-w-[320px]"
+              >
+                Scientific Publications
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-16 rounded-[2rem] border border-[#b9e7f0] bg-white p-8 shadow-sm md:p-10">
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
+              Key advantages
+            </p>
+
+            <div className="mt-8 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+              <article className="rounded-3xl border border-[#d7f2f7] bg-[#f8fdfe] p-6 text-center">
+                <div className="mx-auto mb-5 flex h-18 w-18 items-center justify-center overflow-hidden rounded-2xl bg-white">
+                  <Image
+                    src="/Controled_Structure.png"
+                    alt="Controlled fibrous architecture icon"
+                    width={68}
+                    height={68}
+                    className="h-17 w-17 object-contain"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-[#028aac]">
+                  Controlled Fibrous Architecture
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-[#216674]">
+                  Structures with tunable morphology and structural features.
+                </p>
+              </article>
+
+              <article className="rounded-3xl border border-[#d7f2f7] bg-[#f8fdfe] p-6 text-center">
+                <div className="mx-auto mb-5 flex h-18 w-18 items-center justify-center overflow-hidden rounded-2xl bg-white">
+                  <Image
+                    src="/Specific_Area.png"
+                    alt="High surface area icon"
+                    width={68}
+                    height={68}
+                    className="h-17 w-17 object-contain"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-[#028aac]">
+                  High Surface Area
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-[#216674]">
+                  Designed to provide a large interaction area for advanced
+                  applications.
+                </p>
+              </article>
+
+              <article className="rounded-3xl border border-[#d7f2f7] bg-[#f8fdfe] p-6 text-center">
+                <div className="mx-auto mb-5 flex h-18 w-18 items-center justify-center overflow-hidden rounded-2xl bg-white">
+                  <Image
+                    src="/Material_Versatility.png"
+                    alt="Material versatility icon"
+                    width={68}
+                    height={68}
+                    className="h-17 w-17 object-contain"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-[#028aac]">
+                  Material Versatility
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-[#216674]">
+                  Compatible with different materials and application-driven
+                  design needs.
+                </p>
+              </article>
+
+              <article className="rounded-3xl border border-[#d7f2f7] bg-[#f8fdfe] p-6 text-center">
+                <div className="mx-auto mb-5 flex h-18 w-18 items-center justify-center overflow-hidden rounded-2xl bg-white">
+                  <Image
+                    src="/Costumisable_solu.png"
+                    alt="Customizable solutions icon"
+                    width={68}
+                    height={68}
+                    className="h-17 w-17 object-contain"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-[#028aac]">
+                  Customizable Solutions
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-[#216674]">
+                  Structures can be tailored in composition, architecture and
+                  function depending on the target application.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div className="mt-16">
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
+              Applications
+            </p>
+
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <article className="rounded-3xl border border-[#b9e7f0] bg-white p-8 shadow-sm">
+                <h3 className="text-xl font-semibold">Advanced Cell Culture</h3>
+                <p className="mt-4 leading-7 text-[#216674]">
+                  Fibrous structures designed to support more representative and
+                  functional cell culture environments.
+                </p>
+              </article>
+
+              <article className="rounded-3xl border border-[#b9e7f0] bg-white p-8 shadow-sm">
+                <h3 className="text-xl font-semibold">
+                  Validated Across Cell Models
+                </h3>
+                <p className="mt-4 leading-7 text-[#216674]">
+                  Our platform has been validated across different cell lines,
+                  enabling the development of in vitro models for breast and
+                  lung cancer, adipocytes, hepatoma, etc.
+                </p>
+              </article>
+
+              <article className="rounded-3xl border border-[#b9e7f0] bg-white p-8 shadow-sm">
+                <h3 className="text-xl font-semibold">Drug Screening Support</h3>
+                <p className="mt-4 leading-7 text-[#216674]">
+                  Engineered systems that can contribute to more reliable
+                  preclinical testing environments.
+                </p>
+              </article>
+
+              <article className="rounded-3xl border border-[#b9e7f0] bg-white p-8 shadow-sm">
+                <h3 className="text-xl font-semibold">
+                  Customizable R&amp;D Platforms
+                </h3>
+                <p className="mt-4 leading-7 text-[#216674]">
+                  Flexible solutions designed to support customizable studies
+                  for validation, testing, and applied bioengineering research.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="border-t border-[#b9e7f0] bg-white px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
             Services
@@ -131,99 +438,76 @@ export default function Home() {
 
           <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-3xl font-semibold md:text-4xl">What we do</h2>
+              <h2 className="text-3xl font-semibold md:text-4xl">
+                Services in definition
+              </h2>
               <p className="mt-4 max-w-2xl text-[#216674]">
-                We combine material understanding, fabrication strategies, and
-                scientific vision to create useful and elegant solutions.
+                This section is reserved for service lines that will be defined
+                in more detail soon. For now, the layout stays ready so the
+                browsing order already matches the final structure.
               </p>
             </div>
-
-            <a
-              href="/publications"
-              className="inline-flex min-w-[260px] items-center justify-center rounded-full bg-[#028aac] px-8 py-4 text-center text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#017792] md:min-w-[320px]"
-            >
-              Scientific Publications
-            </a>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <article className="group rounded-3xl border border-[#b9e7f0] bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-              <div className="mb-6 h-10 w-10 rounded-2xl bg-[#eefbfd]" />
-              <h3 className="text-xl font-semibold">Biomaterial platforms</h3>
+            <article className="rounded-3xl border border-[#b9e7f0] bg-[#f4fcfd] p-8">
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
+                Consulting
+              </p>
               <p className="mt-4 leading-7 text-[#216674]">
-                Development of advanced material-based platforms for research,
-                testing, and biomedical innovation.
+                Placeholder for scientific advisory, development strategy, and
+                technical guidance.
               </p>
             </article>
 
-            <article className="group rounded-3xl border border-[#b9e7f0] bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-              <div className="mb-6 h-10 w-10 rounded-2xl bg-[#eefbfd]" />
-              <h3 className="text-xl font-semibold">Electrospun structures</h3>
+            <article className="rounded-3xl border border-[#b9e7f0] bg-[#f4fcfd] p-8">
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
+                Development
+              </p>
               <p className="mt-4 leading-7 text-[#216674]">
-                Design of fibrous architectures inspired by the extracellular
-                matrix for next-generation in vitro models.
+                Placeholder for tailored platform development and experimental
+                implementation.
               </p>
             </article>
 
-            <article className="group rounded-3xl border border-[#b9e7f0] bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-              <div className="mb-6 h-10 w-10 rounded-2xl bg-[#eefbfd]" />
-              <h3 className="text-xl font-semibold">3D fabrication</h3>
+            <article className="rounded-3xl border border-[#b9e7f0] bg-[#f4fcfd] p-8">
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
+                Collaboration
+              </p>
               <p className="mt-4 leading-7 text-[#216674]">
-                Exploration of additive manufacturing strategies for functional
-                structures, prototypes, and translational applications.
+                Placeholder for research partnerships, pilot projects, and
+                translational opportunities.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="about" className="px-6 py-24">
-        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
-          <div>
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
-              About
-            </p>
+      <section
+        id="products"
+        className="border-t border-[#b9e7f0] bg-[#f4fcfd] px-6 py-24"
+      >
+        <div className="mx-auto max-w-6xl">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
+            Products
+          </p>
 
-            <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-tight md:text-4xl">
-              A scientific and design-driven approach to advanced biomedical
-              structures
+          <div className="mt-4">
+            <h2 className="text-3xl font-semibold md:text-4xl">
+              Product section coming soon
             </h2>
-
-            <p className="mt-6 text-lg leading-8 text-[#216674]">
-              SpinCulture3D brings together material design, fabrication
-              strategies, and biomedical vision to create meaningful tools for
-              research and innovation.
+            <p className="mt-4 max-w-2xl text-[#216674]">
+              This area is intentionally reserved for future product
+              definitions, prototypes, and structured offers.
             </p>
           </div>
 
-          <div className="rounded-[2rem] border border-[#b9e7f0] bg-[#f4fcfd] p-8 md:p-10">
-            <p className="text-lg leading-8 text-[#216674]">
-              Our work is focused on bridging advanced manufacturing and living
-              systems through elegant, functional, and research-oriented
-              solutions.
+          <div className="mt-12 rounded-[2rem] border border-dashed border-[#8ad5e5] bg-white p-10">
+            <p className="max-w-3xl text-lg leading-8 text-[#216674]">
+              Once products are defined, this section can host catalog cards,
+              scientific platform summaries, downloadable materials, or direct
+              links to individual product pages.
             </p>
-
-            <div className="mt-10 grid grid-cols-2 gap-4">
-              <div className="rounded-2xl bg-white p-5">
-                <p className="text-sm text-[#028aac]">Discipline</p>
-                <p className="mt-2 font-semibold">Biofabrication</p>
-              </div>
-
-              <div className="rounded-2xl bg-white p-5">
-                <p className="text-sm text-[#028aac]">Application</p>
-                <p className="mt-2 font-semibold">Research tools</p>
-              </div>
-
-              <div className="rounded-2xl bg-white p-5">
-                <p className="text-sm text-[#028aac]">Method</p>
-                <p className="mt-2 font-semibold">Advanced fabrication</p>
-              </div>
-
-              <div className="rounded-2xl bg-white p-5">
-                <p className="text-sm text-[#028aac]">Vision</p>
-                <p className="mt-2 font-semibold">Translation and impact</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -283,6 +567,24 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="news" className="border-t border-[#b9e7f0] bg-white px-6 py-24">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
+            News
+          </p>
+
+          <div className="mt-4 rounded-[2rem] border border-[#b9e7f0] bg-[#f4fcfd] p-8 md:p-10">
+            <h2 className="text-3xl font-semibold md:text-4xl">
+              Updates section in preparation
+            </h2>
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-[#216674]">
+              This placeholder keeps the site structure ready for future news,
+              announcements, milestones, and scientific updates.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section
         id="contact"
         className="border-t border-[#b9e7f0] bg-[#014b5c] px-6 py-24 text-white"
@@ -293,7 +595,7 @@ export default function Home() {
           </p>
 
           <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
-            Let’s build something meaningful together
+            Let's build something meaningful together
           </h2>
 
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d8f2f7]">
