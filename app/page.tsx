@@ -462,46 +462,128 @@ export default function Home() {
           <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <h2 className="text-3xl font-semibold md:text-4xl">
-                Services in definition
+                Services tailored to your research and development needs
               </h2>
-              <p className="mt-4 max-w-2xl text-[#216674] md:text-justify">
-                This section is reserved for service lines that will be defined
-                in more detail soon. For now, the layout stays ready so the
-                browsing order already matches the final structure.
-              </p>
+              <div className="mt-4 max-w-4xl space-y-5 text-[#216674] md:text-justify">
+                <p>
+                  At SpinCulture, we provide development services based on
+                  electrospun fibrous platforms for bioengineering, advanced
+                  cell culture, drug delivery, environmental applications, and
+                  customized in vitro studies.
+                </p>
+
+                <p>
+                  We work with researchers, innovators, and companies seeking
+                  representative, adaptable, and application-oriented fibrous
+                  systems. Our experience includes the development of
+                  electrospun membranes for heavy metal capture, drug delivery
+                  systems, and cell-related applications, allowing us to
+                  approach each project with a broad and versatile perspective.
+                </p>
+
+                <p>
+                  Because electrospinning enables the creation of specific,
+                  complex, and reproducible geometries, our technology can be
+                  adapted to a wide range of needs wherever controlled fibrous
+                  architectures can add value.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <article className="rounded-3xl border border-[#b9e7f0] bg-white/82 p-8 backdrop-blur-[2px]">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
-                Consulting
-              </p>
+          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <article className="rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px]">
+              <h3 className="text-2xl font-semibold">
+                Custom Platform Design
+              </h3>
               <p className="mt-4 leading-7 text-[#216674] md:text-justify">
-                Placeholder for scientific advisory, development strategy, and
-                technical guidance.
+                We design electrospun fibrous platforms tailored to specific
+                biological, technical, and research needs. This includes the
+                definition of material strategy, structural concept, and
+                application-oriented design criteria to create solutions adapted
+                to the intended use.
               </p>
             </article>
 
-            <article className="rounded-3xl border border-[#b9e7f0] bg-white/82 p-8 backdrop-blur-[2px]">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
-                Development
-              </p>
+            <article className="rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px]">
+              <h3 className="text-2xl font-semibold">
+                In Vitro Model Development
+              </h3>
               <p className="mt-4 leading-7 text-[#216674] md:text-justify">
-                Placeholder for tailored platform development and experimental
-                implementation.
+                We support the development of advanced in vitro platforms based
+                on fibrous structures. These systems can provide more relevant
+                environments for cell culture, disease modelling, and
+                biologically oriented research.
               </p>
             </article>
 
-            <article className="rounded-3xl border border-[#b9e7f0] bg-white/82 p-8 backdrop-blur-[2px]">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
-                Collaboration
-              </p>
+            <article className="rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px]">
+              <h3 className="text-2xl font-semibold">
+                Drug Delivery and Functional Membranes
+              </h3>
               <p className="mt-4 leading-7 text-[#216674] md:text-justify">
-                Placeholder for research partnerships, pilot projects, and
-                translational opportunities.
+                We develop electrospun systems for applications beyond cell
+                culture, including drug delivery approaches and membranes
+                designed for functional performance, such as heavy metal
+                capture.
               </p>
             </article>
+
+            <article className="rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px]">
+              <h3 className="text-2xl font-semibold">
+                Customized Studies and Validation
+              </h3>
+              <p className="mt-4 leading-7 text-[#216674] md:text-justify">
+                We develop customizable studies adapted to each research
+                question. Our ability to create reproducible and
+                application-specific structures allows us to support tailored
+                validation, comparative studies, and experimental development.
+              </p>
+            </article>
+
+            <article className="rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] md:col-span-2 xl:col-span-1">
+              <h3 className="text-2xl font-semibold">
+                R&amp;D Collaboration Services
+              </h3>
+              <p className="mt-4 leading-7 text-[#216674] md:text-justify">
+                We collaborate on applied research and innovation projects
+                involving electrospun systems and advanced fibrous platforms.
+                We do not see ourselves as external providers only, but as
+                active collaborators who get involved in each project with the
+                aim of making these technologies accessible and useful across
+                different fields.
+              </p>
+            </article>
+          </div>
+
+          <div className="mt-14 rounded-[2rem] border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] md:p-10">
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
+              How can we help you?
+            </p>
+
+            <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c]">
+                Technology consultation
+              </div>
+              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c]">
+                Electrospun platform design
+              </div>
+              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c]">
+                In vitro model development
+              </div>
+              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c]">
+                Drug delivery system design
+              </div>
+              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c]">
+                Functional membrane development
+              </div>
+              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c]">
+                Customized studies and validation
+              </div>
+              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c] md:col-span-2 xl:col-span-3">
+                Tailored R&amp;D collaborations
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -596,14 +678,53 @@ export default function Home() {
             News
           </p>
 
-          <div className="mt-4 rounded-[2rem] border border-[#b9e7f0] bg-[#f4fcfd] p-8 md:p-10">
-            <h2 className="text-3xl font-semibold md:text-4xl">
-              Updates section in preparation
-            </h2>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-[#216674] md:text-justify">
-              This placeholder keeps the site structure ready for future news,
-              announcements, milestones, and scientific updates.
-            </p>
+          <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="text-3xl font-semibold md:text-4xl">
+                Latest updates from SpinCulture
+              </h2>
+              <p className="mt-4 max-w-3xl text-lg leading-8 text-[#216674] md:text-justify">
+                Discover milestones, events, and activities that connect
+                SpinCulture with the broader innovation and research ecosystem.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
+            <a
+              href="/news/advanced-factories-xarfa"
+              className="group block transition hover:-translate-y-1"
+            >
+              <div className="overflow-hidden rounded-[1.75rem] bg-[#028aac]">
+                <Image
+                  src="/Advanced_Factories.png"
+                  alt="Advanced Factories event"
+                  width={900}
+                  height={520}
+                  className="h-64 w-full bg-[#f4fcfd] object-contain"
+                />
+              </div>
+
+              <div className="pt-6">
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
+                  Event news
+                </p>
+
+                <h3 className="mt-4 text-2xl font-medium leading-[1.2] text-[#028aac] md:text-3xl">
+                  SpinCulture will be at Advanced Factories at the XarFA stand
+                </h3>
+
+                <p className="mt-5 leading-8 text-[#216674] md:text-justify">
+                  Meet us at Advanced Factories as part of the XarFA stand and
+                  discover how SpinCulture is contributing to advanced
+                  fibrous-platform innovation for research and development.
+                </p>
+
+                <p className="mt-6 text-base text-[#9aa9b6]">
+                  May 5 to May 7, 2026
+                </p>
+              </div>
+            </a>
           </div>
         </div>
       </section>
