@@ -7,6 +7,7 @@ export default function Home() {
   const servicesCarouselRef = useRef<HTMLDivElement | null>(null);
   const mobileMenuRef = useRef<HTMLDetailsElement | null>(null);
   const [flippedAboutCards, setFlippedAboutCards] = useState<string[]>([]);
+  const [activeServiceIndex, setActiveServiceIndex] = useState(0);
 
   const aboutCards = [
     {
@@ -55,6 +56,31 @@ export default function Home() {
     );
   };
 
+  const updateCenteredService = () => {
+    const container = servicesCarouselRef.current;
+
+    if (!container || container.children.length === 0) {
+      return;
+    }
+
+    const containerCenter = container.scrollLeft + container.clientWidth / 2;
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
+
+    Array.from(container.children).forEach((child, index) => {
+      const element = child as HTMLElement;
+      const elementCenter = element.offsetLeft + element.offsetWidth / 2;
+      const distance = Math.abs(containerCenter - elementCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    setActiveServiceIndex(closestIndex);
+  };
+
   const scrollServices = (direction: "prev" | "next") => {
     const container = servicesCarouselRef.current;
 
@@ -74,10 +100,11 @@ export default function Home() {
     const step = firstCard.offsetWidth + (Number.isNaN(gap) ? 0 : gap);
     const maxScroll = container.scrollWidth - container.clientWidth;
     const cardCount = container.children.length;
-    const currentIndex = Math.round(container.scrollLeft / Math.max(step, 1));
+    const currentIndex = activeServiceIndex;
 
     if (direction === "next") {
       const targetIndex = currentIndex >= cardCount - 1 ? 0 : currentIndex + 1;
+      setActiveServiceIndex(targetIndex);
       container.scrollTo({ left: targetIndex * step, behavior: "smooth" });
       return;
     }
@@ -87,6 +114,7 @@ export default function Home() {
         ? Math.max(cardCount - 1, 0)
         : Math.max(currentIndex - 1, 0);
 
+    setActiveServiceIndex(targetIndex);
     container.scrollTo({
       left: targetIndex >= cardCount - 1 ? maxScroll : targetIndex * step,
       behavior: "smooth",
@@ -730,13 +758,28 @@ export default function Home() {
           </div>
 
           <div className="mt-14">
-            <div className="mb-5 flex items-center justify-between gap-4">
+            <div className="mb-5 text-center">
               <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
                 Swipe or scroll
               </p>
-              <p className="text-sm text-[#4d8a97]">
+              <p className="mt-2 text-sm text-[#4d8a97]">
                 Explore our services
               </p>
+            </div>
+
+            <div className="mb-6 flex justify-center">
+              <div className="flex items-center gap-2">
+                {[0, 1, 2, 3, 4].map((index) => (
+                  <span
+                    key={index}
+                    className={`h-2.5 rounded-full transition-all duration-300 ${
+                      activeServiceIndex === index
+                        ? "w-8 bg-[#028aac]"
+                        : "w-8 bg-[#8fd7e6]"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
 
             <div className="relative">
@@ -786,6 +829,7 @@ export default function Home() {
 
                 <div
                   ref={servicesCarouselRef}
+                  onScroll={updateCenteredService}
                   className="flex gap-6 overflow-x-auto px-14 pb-4 [scrollbar-width:none] snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden"
                 >
                 <article className="min-w-[290px] snap-start rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] sm:min-w-[340px] lg:min-w-[360px]">
@@ -799,6 +843,11 @@ export default function Home() {
                     application-oriented design criteria to create solutions adapted
                     to the intended use.
                   </p>
+                  <div className="mt-6 flex justify-center">
+                    <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#8ab7c1]">
+                      01
+                    </span>
+                  </div>
                 </article>
 
                 <article className="min-w-[290px] snap-start rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] sm:min-w-[340px] lg:min-w-[360px]">
@@ -811,6 +860,11 @@ export default function Home() {
                     environments for cell culture, disease modelling, and
                     biologically oriented research.
                   </p>
+                  <div className="mt-6 flex justify-center">
+                    <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#8ab7c1]">
+                      02
+                    </span>
+                  </div>
                 </article>
 
                 <article className="min-w-[290px] snap-start rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] sm:min-w-[340px] lg:min-w-[360px]">
@@ -823,6 +877,11 @@ export default function Home() {
                     designed for functional performance, such as heavy metal
                     capture.
                   </p>
+                  <div className="mt-6 flex justify-center">
+                    <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#8ab7c1]">
+                      03
+                    </span>
+                  </div>
                 </article>
 
                 <article className="min-w-[290px] snap-start rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] sm:min-w-[340px] lg:min-w-[360px]">
@@ -835,6 +894,11 @@ export default function Home() {
                     application-specific structures allows us to support tailored
                     validation, comparative studies, and experimental development.
                   </p>
+                  <div className="mt-6 flex justify-center">
+                    <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#8ab7c1]">
+                      04
+                    </span>
+                  </div>
                 </article>
 
                 <article className="min-w-[290px] snap-start rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] sm:min-w-[340px] lg:min-w-[360px]">
@@ -849,6 +913,11 @@ export default function Home() {
                     aim of making these technologies accessible and useful across
                     different fields.
                   </p>
+                  <div className="mt-6 flex justify-center">
+                    <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#8ab7c1]">
+                      05
+                    </span>
+                  </div>
                 </article>
                 </div>
               </div>
