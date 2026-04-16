@@ -53,28 +53,28 @@ export default function Home() {
         className="peer sr-only"
       />
 
-      <div className="pointer-events-none fixed inset-0 z-[120] flex items-center justify-center bg-[#014b5c]/45 px-3 py-4 opacity-0 transition duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100 sm:px-4">
-        <div className="relative grid max-h-[92vh] w-full max-w-4xl gap-0 overflow-hidden overflow-y-auto rounded-[1.75rem] border border-[#98dbe8] bg-white shadow-[0_30px_90px_rgba(1,75,92,0.28)] lg:max-h-none lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="order-2 flex flex-col justify-center px-6 py-7 sm:px-10 sm:py-10 lg:order-1">
+      <div className="pointer-events-none fixed inset-0 z-[120] flex items-center justify-center bg-[#014b5c]/52 px-5 py-6 opacity-0 transition duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100 sm:px-4">
+        <div className="relative grid max-h-[88vh] w-full max-w-[22rem] gap-0 overflow-hidden overflow-y-auto rounded-[1.9rem] border border-[#98dbe8] bg-white shadow-[0_30px_90px_rgba(1,75,92,0.32)] sm:max-h-[90vh] sm:max-w-[28rem] lg:max-h-none lg:max-w-4xl lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="order-2 flex flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 lg:order-1 lg:px-10 lg:py-10">
             <p className="text-sm font-medium uppercase tracking-[0.28em] text-[#028aac]">
               Latest News
             </p>
 
-            <h2 className="mt-4 max-w-xl text-2xl font-semibold leading-tight text-[#014b5c] sm:text-4xl">
+            <h2 className="mt-3 max-w-xl text-[2rem] font-semibold leading-[1.08] text-[#014b5c] sm:text-4xl">
               SpinCulture will be at Advanced Factories at the XarFA stand
             </h2>
 
-            <p className="mt-4 text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
+            <p className="mt-4 text-[13px] font-medium uppercase tracking-[0.18em] text-[#028aac] sm:text-sm">
               May 5 to May 7, 2026
             </p>
 
-            <p className="mt-5 max-w-xl text-[15px] leading-7 text-[#336a77] md:text-justify">
+            <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#336a77] md:text-justify">
               Visit us during Advanced Factories to discover how SpinCulture is
               building electrospun fibrous platforms for advanced cell culture,
               bioengineering, and translational research.
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
                 href="/news/advanced-factories-xarfa"
                 className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#028aac] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#017996]"
@@ -91,7 +91,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative order-1 min-h-[180px] bg-[#dff5fa] sm:min-h-[220px] lg:order-2 lg:min-h-full">
+          <div className="relative order-1 min-h-[150px] bg-[#dff5fa] sm:min-h-[210px] lg:order-2 lg:min-h-full">
             <Image
               src="/Advanced_Factories.png"
               alt="Advanced Factories"
@@ -105,7 +105,7 @@ export default function Home() {
 
           <label
             htmlFor="advanced-factories-popup"
-            className="absolute right-3 top-3 z-10 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/80 bg-white/95 text-xl font-light text-[#014b5c] shadow-sm transition hover:bg-[#eefbfd] sm:right-4 sm:top-4"
+            className="absolute right-3 top-3 z-10 inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/80 bg-white/96 text-xl font-light text-[#014b5c] shadow-sm transition hover:bg-[#eefbfd] sm:right-4 sm:top-4"
             aria-label="Close popup"
           >
             ×
@@ -169,65 +169,91 @@ export default function Home() {
             </div>
           </nav>
 
+          <details className="relative lg:hidden">
+            <summary className="flex h-12 w-12 cursor-pointer list-none items-center justify-center rounded-2xl border border-[#b9e7f0] bg-white text-[#028aac] shadow-sm transition hover:bg-[#eefbfd] [&::-webkit-details-marker]:hidden">
+              <span className="sr-only">Open navigation menu</span>
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M4 7h16" />
+                <path d="M4 12h16" />
+                <path d="M4 17h16" />
+              </svg>
+            </summary>
+
+            <div className="absolute right-0 top-[calc(100%+0.85rem)] z-50 w-[min(84vw,20rem)] overflow-hidden rounded-[1.6rem] border border-[#b9e7f0] bg-white p-3 shadow-[0_24px_55px_rgba(2,138,172,0.18)]">
+              <div className="rounded-[1.2rem] bg-[#f4fcfd] p-3">
+                <p className="text-xs font-medium uppercase tracking-[0.24em] text-[#028aac]">
+                  Navigate
+                </p>
+
+                <div className="mt-3 grid gap-2">
+                  <a
+                    href="#top"
+                    className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
+                  >
+                    Home
+                  </a>
+                  <a
+                    href="#about"
+                    className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
+                  >
+                    About Us
+                  </a>
+                  <a
+                    href="#technology"
+                    className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
+                  >
+                    Technology
+                  </a>
+                  <a
+                    href="#services"
+                    className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
+                  >
+                    Services
+                  </a>
+                  <a
+                    href="#products"
+                    className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
+                  >
+                    Products
+                  </a>
+                  <a
+                    href="#team"
+                    className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
+                  >
+                    Team
+                  </a>
+                  <a
+                    href="#news"
+                    className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
+                  >
+                    News
+                  </a>
+                  <a
+                    href="#contact"
+                    className="rounded-xl bg-[#028aac] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#017996]"
+                  >
+                    Contact
+                  </a>
+                </div>
+              </div>
+            </div>
+          </details>
+
           <a
             href="#contact"
             className="hidden rounded-2xl border-2 border-[#028aac] px-7 py-3 text-sm font-semibold text-[#028aac] transition hover:bg-[#eefbfd] lg:inline-flex"
           >
             Contact Us
           </a>
-        </div>
-
-        <div className="border-t border-[#e2f4f8] lg:hidden">
-          <nav className="mx-auto flex max-w-7xl gap-3 overflow-x-auto px-4 py-3 text-sm font-medium text-[#028aac] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <a
-              href="#top"
-              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
-            >
-              Home
-            </a>
-            <a
-              href="#about"
-              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
-            >
-              About Us
-            </a>
-            <a
-              href="#technology"
-              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
-            >
-              Technology
-            </a>
-            <a
-              href="#services"
-              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
-            >
-              Services
-            </a>
-            <a
-              href="#products"
-              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
-            >
-              Products
-            </a>
-            <a
-              href="#team"
-              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
-            >
-              Team
-            </a>
-            <a
-              href="#news"
-              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
-            >
-              News
-            </a>
-            <a
-              href="#contact"
-              className="shrink-0 rounded-full border border-[#028aac] bg-[#028aac] px-4 py-2 text-white transition hover:bg-[#017996]"
-            >
-              Contact
-            </a>
-          </nav>
         </div>
       </header>
 
