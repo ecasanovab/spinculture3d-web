@@ -5,6 +5,11 @@ import { useRef } from "react";
 
 export default function Home() {
   const servicesCarouselRef = useRef<HTMLDivElement | null>(null);
+  const mobileMenuRef = useRef<HTMLDetailsElement | null>(null);
+
+  const closeMobileMenu = () => {
+    mobileMenuRef.current?.removeAttribute("open");
+  };
 
   const scrollServices = (direction: "prev" | "next") => {
     const container = servicesCarouselRef.current;
@@ -53,14 +58,14 @@ export default function Home() {
         className="peer sr-only"
       />
 
-      <div className="pointer-events-none fixed inset-0 z-[120] flex items-center justify-center bg-[#014b5c]/52 px-5 py-6 opacity-0 transition duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100 sm:px-4">
-        <div className="relative grid max-h-[88vh] w-full max-w-[22rem] gap-0 overflow-hidden overflow-y-auto rounded-[1.9rem] border border-[#98dbe8] bg-white shadow-[0_30px_90px_rgba(1,75,92,0.32)] sm:max-h-[90vh] sm:max-w-[28rem] lg:max-h-none lg:max-w-4xl lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="order-2 flex flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 lg:order-1 lg:px-10 lg:py-10">
+      <div className="pointer-events-none fixed inset-0 z-[120] flex items-center justify-center bg-[#014b5c]/56 px-6 py-8 opacity-0 transition duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100 sm:px-4">
+        <div className="relative grid max-h-[82vh] w-full max-w-[20rem] gap-0 overflow-hidden overflow-y-auto rounded-[1.75rem] border border-[#98dbe8] bg-white shadow-[0_30px_90px_rgba(1,75,92,0.32)] sm:max-h-[88vh] sm:max-w-[28rem] lg:max-h-none lg:max-w-4xl lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="order-2 flex flex-col justify-center px-5 py-5 sm:px-8 sm:py-8 lg:order-1 lg:px-10 lg:py-10">
             <p className="text-sm font-medium uppercase tracking-[0.28em] text-[#028aac]">
               Latest News
             </p>
 
-            <h2 className="mt-3 max-w-xl text-[2rem] font-semibold leading-[1.08] text-[#014b5c] sm:text-4xl">
+            <h2 className="mt-3 max-w-xl text-[1.75rem] font-semibold leading-[1.08] text-[#014b5c] sm:text-4xl">
               SpinCulture will be at Advanced Factories at the XarFA stand
             </h2>
 
@@ -68,13 +73,13 @@ export default function Home() {
               May 5 to May 7, 2026
             </p>
 
-            <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#336a77] md:text-justify">
+            <p className="mt-4 max-w-xl text-[14px] leading-6 text-[#336a77] md:text-justify">
               Visit us during Advanced Factories to discover how SpinCulture is
               building electrospun fibrous platforms for advanced cell culture,
               bioengineering, and translational research.
             </p>
 
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <a
                 href="/news/advanced-factories-xarfa"
                 className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#028aac] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#017996]"
@@ -91,7 +96,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative order-1 min-h-[150px] bg-[#dff5fa] sm:min-h-[210px] lg:order-2 lg:min-h-full">
+          <div className="relative order-1 min-h-[120px] bg-[#dff5fa] sm:min-h-[210px] lg:order-2 lg:min-h-full">
             <Image
               src="/Advanced_Factories.png"
               alt="Advanced Factories"
@@ -169,7 +174,7 @@ export default function Home() {
             </div>
           </nav>
 
-          <details className="relative lg:hidden">
+          <details ref={mobileMenuRef} className="relative lg:hidden">
             <summary className="flex h-12 w-12 cursor-pointer list-none items-center justify-center rounded-2xl border border-[#b9e7f0] bg-white text-[#028aac] shadow-sm transition hover:bg-[#eefbfd] [&::-webkit-details-marker]:hidden">
               <span className="sr-only">Open navigation menu</span>
               <svg
@@ -197,48 +202,56 @@ export default function Home() {
                 <div className="mt-3 grid gap-2">
                   <a
                     href="#top"
+                    onClick={closeMobileMenu}
                     className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
                   >
                     Home
                   </a>
                   <a
                     href="#about"
+                    onClick={closeMobileMenu}
                     className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
                   >
                     About Us
                   </a>
                   <a
                     href="#technology"
+                    onClick={closeMobileMenu}
                     className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
                   >
                     Technology
                   </a>
                   <a
                     href="#services"
+                    onClick={closeMobileMenu}
                     className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
                   >
                     Services
                   </a>
                   <a
                     href="#products"
+                    onClick={closeMobileMenu}
                     className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
                   >
                     Products
                   </a>
                   <a
                     href="#team"
+                    onClick={closeMobileMenu}
                     className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
                   >
                     Team
                   </a>
                   <a
                     href="#news"
+                    onClick={closeMobileMenu}
                     className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-[#028aac] transition hover:bg-[#eefbfd]"
                   >
                     News
                   </a>
                   <a
                     href="#contact"
+                    onClick={closeMobileMenu}
                     className="rounded-xl bg-[#028aac] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#017996]"
                   >
                     Contact
