@@ -3,6 +3,73 @@
 export default function Home() {
   return (
     <main id="top" className="bg-white text-[#014b5c]">
+      <input
+        id="advanced-factories-popup"
+        type="checkbox"
+        defaultChecked
+        className="peer sr-only"
+      />
+
+      <div className="pointer-events-none fixed inset-0 z-[120] flex items-center justify-center bg-[#014b5c]/45 px-4 opacity-0 transition duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100">
+        <div className="relative grid w-full max-w-4xl gap-0 overflow-hidden rounded-[2rem] border border-[#98dbe8] bg-white shadow-[0_30px_90px_rgba(1,75,92,0.28)] lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="flex flex-col justify-center px-7 py-8 sm:px-10 sm:py-10">
+            <p className="text-sm font-medium uppercase tracking-[0.28em] text-[#028aac]">
+              Latest News
+            </p>
+
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-tight text-[#014b5c] sm:text-4xl">
+              SpinCulture will be at Advanced Factories at the XarFA stand
+            </h2>
+
+            <p className="mt-4 text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
+              May 5 to May 7, 2026
+            </p>
+
+            <p className="mt-6 max-w-xl text-base leading-8 text-[#336a77] md:text-justify">
+              Visit us during Advanced Factories to discover how SpinCulture is
+              building electrospun fibrous platforms for advanced cell culture,
+              bioengineering, and translational research.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="/news/advanced-factories-xarfa"
+                className="inline-flex items-center justify-center rounded-full bg-[#028aac] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#017996]"
+              >
+                Read news
+              </a>
+
+              <label
+                htmlFor="advanced-factories-popup"
+                className="inline-flex cursor-pointer items-center justify-center rounded-full border border-[#028aac] px-6 py-3 text-sm font-semibold text-[#028aac] transition hover:bg-[#eefbfd]"
+              >
+                Continue to website
+              </label>
+            </div>
+          </div>
+
+          <div className="relative min-h-[260px] bg-[#dff5fa] lg:min-h-full">
+            <Image
+              src="/Advanced_Factories.png"
+              alt="Advanced Factories"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              priority
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,138,172,0.06),rgba(1,75,92,0.16))]" />
+          </div>
+
+          <label
+            htmlFor="advanced-factories-popup"
+            className="absolute right-4 top-4 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/80 bg-white/95 text-xl font-light text-[#014b5c] shadow-sm transition hover:bg-[#eefbfd]"
+            aria-label="Close popup"
+          >
+            ×
+          </label>
+        </div>
+      </div>
+
       <header className="sticky top-0 z-50 border-b border-[#b9e7f0] bg-white/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-6 py-4">
           <a href="#top" className="flex items-center">
@@ -65,6 +132,59 @@ export default function Home() {
           >
             Contact Us
           </a>
+        </div>
+
+        <div className="border-t border-[#e2f4f8] lg:hidden">
+          <nav className="mx-auto flex max-w-7xl gap-3 overflow-x-auto px-4 py-3 text-sm font-medium text-[#028aac] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <a
+              href="#top"
+              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
+            >
+              Home
+            </a>
+            <a
+              href="#about"
+              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
+            >
+              About Us
+            </a>
+            <a
+              href="#technology"
+              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
+            >
+              Technology
+            </a>
+            <a
+              href="#services"
+              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
+            >
+              Services
+            </a>
+            <a
+              href="#products"
+              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
+            >
+              Products
+            </a>
+            <a
+              href="#team"
+              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
+            >
+              Team
+            </a>
+            <a
+              href="#news"
+              className="shrink-0 rounded-full border border-[#b9e7f0] bg-white px-4 py-2 transition hover:bg-[#eefbfd]"
+            >
+              News
+            </a>
+            <a
+              href="#contact"
+              className="shrink-0 rounded-full border border-[#028aac] bg-[#028aac] px-4 py-2 text-white transition hover:bg-[#017996]"
+            >
+              Contact
+            </a>
+          </nav>
         </div>
       </header>
 
@@ -193,7 +313,7 @@ export default function Home() {
               environments.
             </p>
 
-            <div className="mt-10 grid grid-cols-2 gap-6">
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div className="flex h-full flex-col rounded-2xl bg-white/90 p-5">
                 <p className="text-base font-medium text-[#014b5c]">Approach</p>
                 <div className="mt-4 overflow-hidden rounded-xl">
@@ -202,7 +322,7 @@ export default function Home() {
                     alt="Approach"
                     width={600}
                     height={420}
-                    className="h-44 w-full object-cover"
+                    className="h-56 w-full object-cover sm:h-44 md:h-52"
                   />
                 </div>
                 <p className="mt-4 text-xl leading-8 text-[#014b5c]">
@@ -218,7 +338,7 @@ export default function Home() {
                     alt="Focus"
                     width={600}
                     height={420}
-                    className="h-44 w-full object-cover"
+                    className="h-56 w-full object-cover sm:h-44 md:h-52"
                   />
                 </div>
                 <p className="mt-4 text-xl leading-8 text-[#014b5c]">
@@ -234,7 +354,7 @@ export default function Home() {
                     alt="Goal"
                     width={600}
                     height={420}
-                    className="h-44 w-full object-cover"
+                    className="h-56 w-full object-cover sm:h-44 md:h-52"
                   />
                 </div>
                 <p className="mt-4 text-xl leading-8 text-[#014b5c]">
@@ -244,13 +364,13 @@ export default function Home() {
 
               <div className="flex h-full flex-col rounded-2xl bg-white/90 p-5">
                 <p className="text-base font-medium text-[#014b5c]">Impact</p>
-                <div className="mt-4 flex min-h-[176px] items-center justify-center overflow-hidden rounded-xl bg-[#f8fdfe] p-2">
+                <div className="mt-4 flex min-h-[224px] items-center justify-center overflow-hidden rounded-xl bg-[#f8fdfe] p-4 sm:min-h-[176px] md:min-h-[208px]">
                   <Image
                     src="/Reduce_animal_testing_image_cropped.png"
                     alt="Impact"
                     width={600}
                     height={420}
-                    className="h-auto w-full object-contain"
+                    className="mx-auto h-auto max-h-[180px] w-full object-contain sm:max-h-[130px] md:max-h-[165px]"
                   />
                 </div>
                 <p className="mt-4 text-xl leading-8 text-[#014b5c]">
