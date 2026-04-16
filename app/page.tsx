@@ -452,7 +452,7 @@ export default function Home() {
                     <button
                       type="button"
                       onClick={() => toggleAboutCard(card.id)}
-                      className="mt-4 block h-[18.5rem] w-full rounded-2xl text-left [perspective:1200px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#028aac]/50 sm:h-[16rem] md:h-[17.25rem]"
+                      className="mt-4 block h-[18.5rem] w-full cursor-pointer rounded-2xl text-left [perspective:1200px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#028aac]/50 sm:h-[16rem] md:h-[17.25rem]"
                       aria-label={`${card.title}: flip card`}
                     >
                       <div
@@ -460,7 +460,7 @@ export default function Home() {
                           isFlipped ? "[transform:rotateY(180deg)]" : ""
                         }`}
                       >
-                        <div className="absolute inset-0 overflow-hidden rounded-2xl bg-white [backface-visibility:hidden]">
+                        <div className="absolute inset-0 overflow-hidden rounded-2xl border border-[#d9f1f6] bg-white [backface-visibility:hidden]">
                           <Image
                             src={card.image}
                             alt={card.alt}
@@ -468,6 +468,15 @@ export default function Home() {
                             className={`h-full w-full ${card.imageClassName}`}
                             sizes="(max-width: 768px) 100vw, 50vw"
                           />
+
+                          <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-full bg-white/90 px-4 py-2 shadow-sm backdrop-blur-sm sm:hidden">
+                            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#028aac]">
+                              Tap to flip
+                            </span>
+                            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#028aac]/10 text-[#028aac]">
+                              ↺
+                            </span>
+                          </div>
                         </div>
 
                         <div className="absolute inset-0 flex items-center justify-center rounded-2xl border border-[#b9e7f0] bg-[linear-gradient(135deg,rgba(2,138,172,0.14),rgba(255,255,255,0.98))] p-6 text-center [backface-visibility:hidden] [transform:rotateY(180deg)]">
@@ -733,53 +742,54 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <button
-                type="button"
-                onClick={() => scrollServices("prev")}
-                className="absolute left-0 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#b9e7f0] bg-white/92 text-[#028aac] shadow-sm transition hover:bg-[#eefbfd]"
-                aria-label="Previous service"
-              >
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  className="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => scrollServices("next")}
-                className="absolute right-0 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#b9e7f0] bg-white/92 text-[#028aac] shadow-sm transition hover:bg-[#eefbfd]"
-                aria-label="Next service"
-              >
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  className="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
-              </button>
-
               <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-[linear-gradient(90deg,rgba(255,255,255,0.92),rgba(255,255,255,0))]" />
               <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-[linear-gradient(270deg,rgba(244,252,253,0.9),rgba(244,252,253,0))]" />
 
-              <div
-                ref={servicesCarouselRef}
-                className="flex gap-6 overflow-x-auto px-14 pb-4 [scrollbar-width:none] snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden"
-              >
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => scrollServices("prev")}
+                  className="absolute inset-y-0 left-0 z-10 my-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#b9e7f0] bg-white/92 text-[#028aac] shadow-sm transition hover:bg-[#eefbfd]"
+                  aria-label="Previous service"
+                >
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => scrollServices("next")}
+                  className="absolute inset-y-0 right-0 z-10 my-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#b9e7f0] bg-white/92 text-[#028aac] shadow-sm transition hover:bg-[#eefbfd]"
+                  aria-label="Next service"
+                >
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+
+                <div
+                  ref={servicesCarouselRef}
+                  className="flex gap-6 overflow-x-auto px-14 pb-4 [scrollbar-width:none] snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden"
+                >
                 <article className="min-w-[290px] snap-start rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] sm:min-w-[340px] lg:min-w-[360px]">
                   <h3 className="text-2xl font-semibold">
                     Custom Platform Design
@@ -842,6 +852,7 @@ export default function Home() {
                     different fields.
                   </p>
                 </article>
+                </div>
               </div>
             </div>
           </div>
