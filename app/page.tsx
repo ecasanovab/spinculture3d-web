@@ -469,11 +469,9 @@ export default function Home() {
                             sizes="(max-width: 768px) 100vw, 50vw"
                           />
 
-                          <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-full bg-white/90 px-4 py-2 shadow-sm backdrop-blur-sm sm:hidden">
-                            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#028aac]">
-                              Tap to flip
-                            </span>
-                            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#028aac]/10 text-[#028aac]">
+                          <div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full bg-white/88 px-3 py-2 shadow-sm backdrop-blur-sm sm:hidden">
+                            <span className="h-2 w-2 rounded-full bg-[#028aac]/70" />
+                            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[#b9e7f0] bg-white text-sm text-[#028aac]">
                               ↺
                             </span>
                           </div>
