@@ -1,6 +1,49 @@
-﻿import Image from "next/image";
+﻿"use client";
+
+import Image from "next/image";
+import { useRef } from "react";
 
 export default function Home() {
+  const servicesCarouselRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollServices = (direction: "prev" | "next") => {
+    const container = servicesCarouselRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    const firstCard = container.firstElementChild as HTMLElement | null;
+
+    if (!firstCard) {
+      return;
+    }
+
+    const styles = window.getComputedStyle(container);
+    const gapValue = styles.columnGap || styles.gap || "0";
+    const gap = Number.parseFloat(gapValue);
+    const step = firstCard.offsetWidth + (Number.isNaN(gap) ? 0 : gap);
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    const cardCount = container.children.length;
+    const currentIndex = Math.round(container.scrollLeft / Math.max(step, 1));
+
+    if (direction === "next") {
+      const targetIndex = currentIndex >= cardCount - 1 ? 0 : currentIndex + 1;
+      container.scrollTo({ left: targetIndex * step, behavior: "smooth" });
+      return;
+    }
+
+    const targetIndex =
+      container.scrollLeft <= step * 0.35
+        ? Math.max(cardCount - 1, 0)
+        : Math.max(currentIndex - 1, 0);
+
+    container.scrollTo({
+      left: targetIndex >= cardCount - 1 ? maxScroll : targetIndex * step,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <main id="top" className="bg-white text-[#014b5c]">
       <input
@@ -10,14 +53,14 @@ export default function Home() {
         className="peer sr-only"
       />
 
-      <div className="pointer-events-none fixed inset-0 z-[120] flex items-center justify-center bg-[#014b5c]/45 px-4 opacity-0 transition duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100">
-        <div className="relative grid w-full max-w-4xl gap-0 overflow-hidden rounded-[2rem] border border-[#98dbe8] bg-white shadow-[0_30px_90px_rgba(1,75,92,0.28)] lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="flex flex-col justify-center px-7 py-8 sm:px-10 sm:py-10">
+      <div className="pointer-events-none fixed inset-0 z-[120] flex items-center justify-center bg-[#014b5c]/45 px-3 py-4 opacity-0 transition duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100 sm:px-4">
+        <div className="relative grid max-h-[92vh] w-full max-w-4xl gap-0 overflow-hidden overflow-y-auto rounded-[1.75rem] border border-[#98dbe8] bg-white shadow-[0_30px_90px_rgba(1,75,92,0.28)] lg:max-h-none lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="order-2 flex flex-col justify-center px-6 py-7 sm:px-10 sm:py-10 lg:order-1">
             <p className="text-sm font-medium uppercase tracking-[0.28em] text-[#028aac]">
               Latest News
             </p>
 
-            <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-tight text-[#014b5c] sm:text-4xl">
+            <h2 className="mt-4 max-w-xl text-2xl font-semibold leading-tight text-[#014b5c] sm:text-4xl">
               SpinCulture will be at Advanced Factories at the XarFA stand
             </h2>
 
@@ -25,30 +68,30 @@ export default function Home() {
               May 5 to May 7, 2026
             </p>
 
-            <p className="mt-6 max-w-xl text-base leading-8 text-[#336a77] md:text-justify">
+            <p className="mt-5 max-w-xl text-[15px] leading-7 text-[#336a77] md:text-justify">
               Visit us during Advanced Factories to discover how SpinCulture is
               building electrospun fibrous platforms for advanced cell culture,
               bioengineering, and translational research.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
                 href="/news/advanced-factories-xarfa"
-                className="inline-flex items-center justify-center rounded-full bg-[#028aac] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#017996]"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#028aac] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#017996]"
               >
                 Read news
               </a>
 
               <label
                 htmlFor="advanced-factories-popup"
-                className="inline-flex cursor-pointer items-center justify-center rounded-full border border-[#028aac] px-6 py-3 text-sm font-semibold text-[#028aac] transition hover:bg-[#eefbfd]"
+                className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border border-[#028aac] px-6 py-3 text-sm font-semibold text-[#028aac] transition hover:bg-[#eefbfd]"
               >
                 Continue to website
               </label>
             </div>
           </div>
 
-          <div className="relative min-h-[260px] bg-[#dff5fa] lg:min-h-full">
+          <div className="relative order-1 min-h-[180px] bg-[#dff5fa] sm:min-h-[220px] lg:order-2 lg:min-h-full">
             <Image
               src="/Advanced_Factories.png"
               alt="Advanced Factories"
@@ -62,7 +105,7 @@ export default function Home() {
 
           <label
             htmlFor="advanced-factories-popup"
-            className="absolute right-4 top-4 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/80 bg-white/95 text-xl font-light text-[#014b5c] shadow-sm transition hover:bg-[#eefbfd]"
+            className="absolute right-3 top-3 z-10 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/80 bg-white/95 text-xl font-light text-[#014b5c] shadow-sm transition hover:bg-[#eefbfd] sm:right-4 sm:top-4"
             aria-label="Close popup"
           >
             ×
@@ -611,69 +654,128 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            <article className="rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px]">
-              <h3 className="text-2xl font-semibold">
-                Custom Platform Design
-              </h3>
-              <p className="mt-4 leading-7 text-[#216674] md:text-justify">
-                We design electrospun fibrous platforms tailored to specific
-                biological, technical, and research needs. This includes the
-                definition of material strategy, structural concept, and
-                application-oriented design criteria to create solutions adapted
-                to the intended use.
+          <div className="mt-14">
+            <div className="mb-5 flex items-center justify-between gap-4">
+              <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
+                Swipe or scroll
               </p>
-            </article>
+              <p className="text-sm text-[#4d8a97]">
+                Explore our services
+              </p>
+            </div>
 
-            <article className="rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px]">
-              <h3 className="text-2xl font-semibold">
-                In Vitro Model Development
-              </h3>
-              <p className="mt-4 leading-7 text-[#216674] md:text-justify">
-                We support the development of advanced in vitro platforms based
-                on fibrous structures. These systems can provide more relevant
-                environments for cell culture, disease modelling, and
-                biologically oriented research.
-              </p>
-            </article>
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => scrollServices("prev")}
+                className="absolute left-0 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#b9e7f0] bg-white/92 text-[#028aac] shadow-sm transition hover:bg-[#eefbfd]"
+                aria-label="Previous service"
+              >
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
 
-            <article className="rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px]">
-              <h3 className="text-2xl font-semibold">
-                Drug Delivery and Functional Membranes
-              </h3>
-              <p className="mt-4 leading-7 text-[#216674] md:text-justify">
-                We develop electrospun systems for applications beyond cell
-                culture, including drug delivery approaches and membranes
-                designed for functional performance, such as heavy metal
-                capture.
-              </p>
-            </article>
+              <button
+                type="button"
+                onClick={() => scrollServices("next")}
+                className="absolute right-0 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#b9e7f0] bg-white/92 text-[#028aac] shadow-sm transition hover:bg-[#eefbfd]"
+                aria-label="Next service"
+              >
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
 
-            <article className="rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px]">
-              <h3 className="text-2xl font-semibold">
-                Customized Studies and Validation
-              </h3>
-              <p className="mt-4 leading-7 text-[#216674] md:text-justify">
-                We develop customizable studies adapted to each research
-                question. Our ability to create reproducible and
-                application-specific structures allows us to support tailored
-                validation, comparative studies, and experimental development.
-              </p>
-            </article>
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-[linear-gradient(90deg,rgba(255,255,255,0.92),rgba(255,255,255,0))]" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-[linear-gradient(270deg,rgba(244,252,253,0.9),rgba(244,252,253,0))]" />
 
-            <article className="rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] md:col-span-2 xl:col-span-1">
-              <h3 className="text-2xl font-semibold">
-                R&amp;D Collaboration Services
-              </h3>
-              <p className="mt-4 leading-7 text-[#216674] md:text-justify">
-                We collaborate on applied research and innovation projects
-                involving electrospun systems and advanced fibrous platforms.
-                We do not see ourselves as external providers only, but as
-                active collaborators who get involved in each project with the
-                aim of making these technologies accessible and useful across
-                different fields.
-              </p>
-            </article>
+              <div
+                ref={servicesCarouselRef}
+                className="flex gap-6 overflow-x-auto px-14 pb-4 [scrollbar-width:none] snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden"
+              >
+                <article className="min-w-[290px] snap-start rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] sm:min-w-[340px] lg:min-w-[360px]">
+                  <h3 className="text-2xl font-semibold">
+                    Custom Platform Design
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#216674] md:text-justify">
+                    We design electrospun fibrous platforms tailored to specific
+                    biological, technical, and research needs. This includes the
+                    definition of material strategy, structural concept, and
+                    application-oriented design criteria to create solutions adapted
+                    to the intended use.
+                  </p>
+                </article>
+
+                <article className="min-w-[290px] snap-start rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] sm:min-w-[340px] lg:min-w-[360px]">
+                  <h3 className="text-2xl font-semibold">
+                    In Vitro Model Development
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#216674] md:text-justify">
+                    We support the development of advanced in vitro platforms based
+                    on fibrous structures. These systems can provide more relevant
+                    environments for cell culture, disease modelling, and
+                    biologically oriented research.
+                  </p>
+                </article>
+
+                <article className="min-w-[290px] snap-start rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] sm:min-w-[340px] lg:min-w-[360px]">
+                  <h3 className="text-2xl font-semibold">
+                    Drug Delivery and Functional Membranes
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#216674] md:text-justify">
+                    We develop electrospun systems for applications beyond cell
+                    culture, including drug delivery approaches and membranes
+                    designed for functional performance, such as heavy metal
+                    capture.
+                  </p>
+                </article>
+
+                <article className="min-w-[290px] snap-start rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] sm:min-w-[340px] lg:min-w-[360px]">
+                  <h3 className="text-2xl font-semibold">
+                    Customized Studies and Validation
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#216674] md:text-justify">
+                    We develop customizable studies adapted to each research
+                    question. Our ability to create reproducible and
+                    application-specific structures allows us to support tailored
+                    validation, comparative studies, and experimental development.
+                  </p>
+                </article>
+
+                <article className="min-w-[290px] snap-start rounded-3xl border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] sm:min-w-[340px] lg:min-w-[360px]">
+                  <h3 className="text-2xl font-semibold">
+                    R&amp;D Collaboration Services
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#216674] md:text-justify">
+                    We collaborate on applied research and innovation projects
+                    involving electrospun systems and advanced fibrous platforms.
+                    We do not see ourselves as external providers only, but as
+                    active collaborators who get involved in each project with the
+                    aim of making these technologies accessible and useful across
+                    different fields.
+                  </p>
+                </article>
+              </div>
+            </div>
           </div>
 
           <div className="mt-14 rounded-[2rem] border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] md:p-10">
@@ -887,3 +989,6 @@ export default function Home() {
     </main>
   );
 }
+
+
+
