@@ -1,14 +1,58 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Home() {
   const servicesCarouselRef = useRef<HTMLDivElement | null>(null);
   const mobileMenuRef = useRef<HTMLDetailsElement | null>(null);
+  const [flippedAboutCards, setFlippedAboutCards] = useState<string[]>([]);
+
+  const aboutCards = [
+    {
+      id: "approach",
+      title: "Approach",
+      image: "/SEM_image_cropped.png",
+      alt: "Approach",
+      imageClassName: "object-cover",
+      description: "Electrospinning based 3D culture",
+    },
+    {
+      id: "focus",
+      title: "Focus",
+      image: "/Confocal_image.jpg",
+      alt: "Focus",
+      imageClassName: "object-cover",
+      description: "Physiological relevance",
+    },
+    {
+      id: "goal",
+      title: "Goal",
+      image: "/Predictive_research_models_image.png",
+      alt: "Goal",
+      imageClassName: "object-cover",
+      description: "Predictive research models",
+    },
+    {
+      id: "impact",
+      title: "Impact",
+      image: "/Reduce_animal_testing_image_cropped.png",
+      alt: "Impact",
+      imageClassName: "object-contain bg-[#f8fdfe] p-4",
+      description: "Reduce Animal model",
+    },
+  ];
 
   const closeMobileMenu = () => {
     mobileMenuRef.current?.removeAttribute("open");
+  };
+
+  const toggleAboutCard = (cardId: string) => {
+    setFlippedAboutCards((current) =>
+      current.includes(cardId)
+        ? current.filter((id) => id !== cardId)
+        : [...current, cardId],
+    );
   };
 
   const scrollServices = (direction: "prev" | "next") => {
@@ -396,69 +440,54 @@ export default function Home() {
             </p>
 
             <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div className="flex h-full flex-col rounded-2xl bg-white/90 p-5">
-                <p className="text-base font-medium text-[#014b5c]">Approach</p>
-                <div className="mt-4 overflow-hidden rounded-xl">
-                  <Image
-                    src="/SEM_image_cropped.png"
-                    alt="Approach"
-                    width={600}
-                    height={420}
-                    className="h-56 w-full object-cover sm:h-44 md:h-52"
-                  />
-                </div>
-                <p className="mt-4 text-xl leading-8 text-[#014b5c]">
-                  Electrospinning based 3D culture
-                </p>
-              </div>
+              {aboutCards.map((card) => {
+                const isFlipped = flippedAboutCards.includes(card.id);
 
-              <div className="flex h-full flex-col rounded-2xl bg-white/90 p-5">
-                <p className="text-base font-medium text-[#014b5c]">Focus</p>
-                <div className="mt-4 overflow-hidden rounded-xl">
-                  <Image
-                    src="/Confocal_image.jpg"
-                    alt="Focus"
-                    width={600}
-                    height={420}
-                    className="h-56 w-full object-cover sm:h-44 md:h-52"
-                  />
-                </div>
-                <p className="mt-4 text-xl leading-8 text-[#014b5c]">
-                  Physiological relevance
-                </p>
-              </div>
+                return (
+                  <div key={card.id} className="group">
+                    <p className="text-base font-medium text-[#014b5c]">
+                      {card.title}
+                    </p>
 
-              <div className="flex h-full flex-col rounded-2xl bg-white/90 p-5">
-                <p className="text-base font-medium text-[#014b5c]">Goal</p>
-                <div className="mt-4 overflow-hidden rounded-xl">
-                  <Image
-                    src="/Predictive_research_models_image.png"
-                    alt="Goal"
-                    width={600}
-                    height={420}
-                    className="h-56 w-full object-cover sm:h-44 md:h-52"
-                  />
-                </div>
-                <p className="mt-4 text-xl leading-8 text-[#014b5c]">
-                  Predictive research models
-                </p>
-              </div>
+                    <button
+                      type="button"
+                      onClick={() => toggleAboutCard(card.id)}
+                      className="mt-4 block h-[18.5rem] w-full rounded-2xl text-left [perspective:1200px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#028aac]/50 sm:h-[16rem] md:h-[17.25rem]"
+                      aria-label={`${card.title}: flip card`}
+                    >
+                      <div
+                        className={`relative h-full w-full rounded-2xl transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] ${
+                          isFlipped ? "[transform:rotateY(180deg)]" : ""
+                        }`}
+                      >
+                        <div className="absolute inset-0 overflow-hidden rounded-2xl bg-white [backface-visibility:hidden]">
+                          <Image
+                            src={card.image}
+                            alt={card.alt}
+                            fill
+                            className={`h-full w-full ${card.imageClassName}`}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </div>
 
-              <div className="flex h-full flex-col rounded-2xl bg-white/90 p-5">
-                <p className="text-base font-medium text-[#014b5c]">Impact</p>
-                <div className="mt-4 flex min-h-[224px] items-center justify-center overflow-hidden rounded-xl bg-[#f8fdfe] p-4 sm:min-h-[176px] md:min-h-[208px]">
-                  <Image
-                    src="/Reduce_animal_testing_image_cropped.png"
-                    alt="Impact"
-                    width={600}
-                    height={420}
-                    className="mx-auto h-auto max-h-[180px] w-full object-contain sm:max-h-[130px] md:max-h-[165px]"
-                  />
-                </div>
-                <p className="mt-4 text-xl leading-8 text-[#014b5c]">
-                  Reduce Animal model
-                </p>
-              </div>
+                        <div className="absolute inset-0 flex items-center justify-center rounded-2xl border border-[#b9e7f0] bg-[linear-gradient(135deg,rgba(2,138,172,0.14),rgba(255,255,255,0.98))] p-6 text-center [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                          <div>
+                            <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#028aac]">
+                              {card.title}
+                            </p>
+                            <p className="mt-4 text-2xl font-semibold leading-tight text-[#014b5c]">
+                              {card.description}
+                            </p>
+                            <p className="mt-4 text-sm leading-6 text-[#3e7785] sm:hidden">
+                              Tap again to return to the image.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -817,32 +846,68 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-14 rounded-[2rem] border border-[#b9e7f0] bg-white/86 p-8 shadow-sm backdrop-blur-[2px] md:p-10">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
-              How can we help you?
-            </p>
+          <div className="mt-14 overflow-hidden rounded-[2rem] border border-[#b9e7f0] bg-white/88 shadow-sm backdrop-blur-[2px]">
+            <div className="border-b border-[#d8f1f6] bg-[linear-gradient(135deg,rgba(2,138,172,0.12),rgba(255,255,255,0.96))] px-8 py-8 md:px-10">
+              <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
+                How can we help you?
+              </p>
+              <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                <h3 className="max-w-2xl text-2xl font-semibold leading-tight text-[#014b5c] md:text-3xl">
+                  Flexible entry points for teams looking to build, validate, or
+                  scale advanced electrospun solutions.
+                </h3>
+                <p className="max-w-xl text-sm leading-7 text-[#3c7885] md:text-base">
+                  Choose the level of support that best matches your research
+                  stage, from early technical conversations to tailored
+                  development partnerships.
+                </p>
+              </div>
+            </div>
 
-            <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c]">
-                Technology consultation
+            <div className="grid gap-4 px-8 py-8 md:px-10 md:py-10 lg:grid-cols-[1.15fr_0.85fr]">
+              <div className="rounded-[1.7rem] border border-[#d5eff5] bg-[#f7fdfe] p-6">
+                <p className="text-xs font-medium uppercase tracking-[0.24em] text-[#028aac]">
+                  Core Support
+                </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <div className="rounded-full border border-[#b9e7f0] bg-white px-5 py-3 text-sm font-semibold text-[#014b5c] shadow-sm">
+                    Technology consultation
+                  </div>
+                  <div className="rounded-full border border-[#b9e7f0] bg-white px-5 py-3 text-sm font-semibold text-[#014b5c] shadow-sm">
+                    Electrospun platform design
+                  </div>
+                  <div className="rounded-full border border-[#b9e7f0] bg-white px-5 py-3 text-sm font-semibold text-[#014b5c] shadow-sm">
+                    In vitro model development
+                  </div>
+                  <div className="rounded-full border border-[#b9e7f0] bg-white px-5 py-3 text-sm font-semibold text-[#014b5c] shadow-sm">
+                    Drug delivery system design
+                  </div>
+                  <div className="rounded-full border border-[#b9e7f0] bg-white px-5 py-3 text-sm font-semibold text-[#014b5c] shadow-sm">
+                    Functional membrane development
+                  </div>
+                  <div className="rounded-full border border-[#b9e7f0] bg-white px-5 py-3 text-sm font-semibold text-[#014b5c] shadow-sm">
+                    Customized studies and validation
+                  </div>
+                </div>
               </div>
-              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c]">
-                Electrospun platform design
-              </div>
-              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c]">
-                In vitro model development
-              </div>
-              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c]">
-                Drug delivery system design
-              </div>
-              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c]">
-                Functional membrane development
-              </div>
-              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c]">
-                Customized studies and validation
-              </div>
-              <div className="rounded-2xl bg-[#f4fcfd] px-5 py-4 font-medium text-[#014b5c] md:col-span-2 xl:col-span-3">
-                Tailored R&amp;D collaborations
+
+              <div className="relative overflow-hidden rounded-[1.7rem] border border-[#9fddea] bg-[#028aac] p-6 text-white shadow-[0_18px_40px_rgba(2,138,172,0.18)]">
+                <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full border border-white/15" />
+                <div className="absolute bottom-[-2.5rem] right-6 h-24 w-24 rounded-full bg-white/8 blur-xl" />
+                <p className="relative text-xs font-medium uppercase tracking-[0.24em] text-white/80">
+                  Collaboration Path
+                </p>
+                <h4 className="relative mt-4 text-2xl font-semibold leading-tight">
+                  Tailored R&amp;D collaborations
+                </h4>
+                <p className="relative mt-4 text-sm leading-7 text-[#e7fbff] md:text-base">
+                  A stronger partnership model for teams who need a more
+                  customized route, combining scientific alignment, application
+                  design, and project-specific development.
+                </p>
+                <div className="relative mt-6 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] text-white">
+                  Startup-ready support
+                </div>
               </div>
             </div>
           </div>
