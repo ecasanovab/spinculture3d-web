@@ -7,6 +7,67 @@
     file: "/Article1.pdf",
     downloadName: "Article1.pdf",
   },
+  {
+    title:
+      "Elucidating the Role of FASN in Lung Cancer Stem Cells in Sensitive and Resistant EGFR-Mutated Non-Small Cell Lung Cancer Cells",
+    authors:
+      "Emma Polonio-Alcalá, Sira Ausellé-Bosch, Gerard Riesco-Llach, Pablo Novales, Lidia Feliu, Marta Planas, Joaquim Ciurana and Teresa Puig",
+    file: "/Article2.pdf",
+    downloadName: "Article2.pdf",
+  },
+  {
+    title:
+      "The solvent chosen for the manufacturing of electrospun polycaprolactone scaffolds influences cell behavior of lung cancer cells",
+    authors:
+      "Emma Polonio-Alcalá, Enric Casanova-Batlle, Teresa Puig and Joaquim Ciurana",
+    file: "/Article3.pdf",
+    downloadName: "Article3.pdf",
+  },
+  {
+    title:
+      "Fatty acid synthase as a feasible biomarker for triple negative breast cancer stem cell subpopulation cultured on electrospun scaffolds",
+    authors:
+      "Marc Rabionet, Emma Polonio-Alcalá, Joana Relat, Marc Yeste, Jennifer Sims-Mourtada, April M. Kloxin, Marta Planas, Lidia Feliu, Joaquim Ciurana and Teresa Puig",
+    file: "/Article4.pdf",
+    downloadName: "Article4.pdf",
+  },
+  {
+    title:
+      "Polycaprolactone Electrospun Scaffolds Produce an Enrichment of Lung Cancer Stem Cells in Sensitive and Resistant EGFRm Lung Adenocarcinoma",
+    authors:
+      "Emma Polonio-Alcalá, Marc Rabionet, Santiago Ruiz-Martínez, Sònia Palomeras, Rut Porta, Carmen Vásquez-Dongo, Joaquim Bosch-Barrera, Teresa Puig and Joaquim Ciurana",
+    file: "/Article5.pdf",
+    downloadName: "Article5.pdf",
+  },
+  {
+    title:
+      "Manufacture of PCL scaffolds through electrospinning technology to accommodate Triple Negative Breast Cancer cells Culture",
+    authors: "Marc Rabionet, Teresa Puig and Joaquim Ciurana",
+    file: "/Article6.pdf",
+    downloadName: "Article6.pdf",
+  },
+  {
+    title:
+      "PLA Electrospun Scaffolds for Three-Dimensional Triple-Negative Breast Cancer Cell Culture",
+    authors:
+      "Emma Polonio-Alcalá, Marc Rabionet, Xavier Gallardo, David Angelats, Joaquim Ciurana, Santiago Ruiz-Martínez and Teresa Puig",
+    file: "/Article7.pdf",
+    downloadName: "Article7.pdf",
+  },
+  {
+    title:
+      "Electrospinning PCL Scaffolds Manufacture for Three-Dimensional Breast Cancer Cell Culture",
+    authors: "Marc Rabionet, Marc Yeste, Teresa Puig and Joaquim Ciurana",
+    file: "/Article8.pdf",
+    downloadName: "Article8.pdf",
+  },
+  {
+    title:
+      "Electrospinning parameters selection to manufacture polycaprolactone scaffolds for three-dimensional breast cancer cell culture and enrichment",
+    authors: "Marc Rabionet, Teresa Puig and Joaquim Ciurana",
+    file: "/Article9.pdf",
+    downloadName: "Article9.pdf",
+  },
 ];
 
 export default function PublicationsPage() {
@@ -26,11 +87,11 @@ export default function PublicationsPage() {
           a clean format and ready for download.
         </p>
 
-        <section className="mt-14 grid gap-8 md:max-w-3xl">
+        <section className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
           {publications.map((publication) => (
             <article
               key={publication.file}
-              className="flex min-h-[560px] flex-col justify-between rounded-[2rem] border border-[#b9e7f0] bg-white p-10 shadow-[0_20px_50px_rgba(2,138,172,0.10)]"
+              className="flex min-h-[520px] flex-col justify-between rounded-[2rem] border border-[#b9e7f0] bg-white p-10 shadow-[0_20px_50px_rgba(2,138,172,0.10)]"
             >
               <div>
                 <h2 className="text-3xl font-medium leading-[1.2] text-[#028aac]">
