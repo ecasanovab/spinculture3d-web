@@ -1,6 +1,8 @@
 ﻿"use client";
 
 import Image from "next/image";
+import Script from "next/script";
+import type { FormEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
@@ -9,6 +11,11 @@ export default function Home() {
   const [flippedAboutCards, setFlippedAboutCards] = useState<string[]>([]);
   const [activeServiceIndex, setActiveServiceIndex] = useState(0);
   const [showNewsPopup, setShowNewsPopup] = useState(false);
+  const [contactStatus, setContactStatus] = useState<
+    "idle" | "sending" | "sent" | "error"
+  >("idle");
+  const [contactMessage, setContactMessage] = useState("");
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   const aboutCards = [
     {
@@ -149,8 +156,56 @@ export default function Home() {
     });
   };
 
+  const submitContactForm = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const recaptchaToken = formData.get("g-recaptcha-response");
+
+    if (recaptchaSiteKey && !recaptchaToken) {
+      setContactStatus("error");
+      setContactMessage("Please complete the reCAPTCHA before sending.");
+      return;
+    }
+
+    setContactStatus("sending");
+    setContactMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+      const result = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        throw new Error(result.message || "The message could not be sent.");
+      }
+
+      form.reset();
+      const grecaptcha = (
+        window as typeof window & { grecaptcha?: { reset: () => void } }
+      ).grecaptcha;
+      grecaptcha?.reset();
+      setContactStatus("sent");
+      setContactMessage("Thank you. Your message has been sent.");
+    } catch (error) {
+      setContactStatus("error");
+      setContactMessage(
+        error instanceof Error
+          ? error.message
+          : "The message could not be sent.",
+      );
+    }
+  };
+
   return (
     <main id="top" className="bg-white text-[#014b5c]">
+      {recaptchaSiteKey ? (
+        <Script src="https://www.google.com/recaptcha/api.js" async defer />
+      ) : null}
+
       {showNewsPopup ? (
         <div className="fixed inset-0 z-[120] flex items-center justify-center bg-[#014b5c]/56 px-6 py-8 transition duration-300 sm:px-4">
         <div className="relative grid max-h-[82vh] w-full max-w-[20rem] gap-0 overflow-hidden overflow-y-auto rounded-[1.75rem] border border-[#98dbe8] bg-white shadow-[0_30px_90px_rgba(1,75,92,0.32)] sm:max-h-[88vh] sm:max-w-[28rem] lg:max-h-none lg:max-w-4xl lg:grid-cols-[1.05fr_0.95fr]">
@@ -1169,9 +1224,7 @@ export default function Home() {
           </p>
 
           <form
-            action="mailto:ecasanovab@gmail.com?subject=SpinCulture3D%20contact%20form"
-            method="post"
-            encType="text/plain"
+            onSubmit={submitContactForm}
             className="mt-10 grid gap-5 rounded-[2rem] border border-[#98dbe8]/35 bg-white/10 p-6 shadow-[0_24px_55px_rgba(0,0,0,0.14)] backdrop-blur-sm md:grid-cols-2 md:p-8"
           >
             <label className="grid gap-2 text-sm font-medium text-[#e7fbff]">
@@ -1238,16 +1291,41 @@ export default function Home() {
               />
             </label>
 
+            {recaptchaSiteKey ? (
+              <div className="md:col-span-2">
+                <div
+                  className="g-recaptcha"
+                  data-sitekey={recaptchaSiteKey}
+                />
+              </div>
+            ) : (
+              <p className="rounded-2xl border border-[#ffd9a8] bg-[#fff6e8] px-4 py-3 text-sm leading-6 text-[#7a4b00] md:col-span-2">
+                reCAPTCHA is not configured yet. Add your site key and secret
+                key to enable protected submissions.
+              </p>
+            )}
+
             <div className="flex flex-col gap-3 md:col-span-2 md:flex-row md:items-center md:justify-between">
-              <p className="text-sm leading-6 text-[#d8f2f7]">
-                The form will open an email addressed to ecasanovab@gmail.com.
+              <p
+                aria-live="polite"
+                className={`text-sm leading-6 ${
+                  contactStatus === "sent"
+                    ? "text-[#d4ffe8]"
+                    : contactStatus === "error"
+                      ? "text-[#ffe3d8]"
+                      : "text-[#d8f2f7]"
+                }`}
+              >
+                {contactMessage ||
+                  "Messages are sent directly to ecasanovab@gmail.com."}
               </p>
 
               <button
                 type="submit"
-                className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#014b5c] transition hover:bg-[#eefbfd]"
+                disabled={contactStatus === "sending"}
+                className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#014b5c] transition hover:bg-[#eefbfd] disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Send message
+                {contactStatus === "sending" ? "Sending..." : "Send message"}
               </button>
             </div>
           </form>
