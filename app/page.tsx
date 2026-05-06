@@ -1,13 +1,14 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const servicesCarouselRef = useRef<HTMLDivElement | null>(null);
   const mobileMenuRef = useRef<HTMLDetailsElement | null>(null);
   const [flippedAboutCards, setFlippedAboutCards] = useState<string[]>([]);
   const [activeServiceIndex, setActiveServiceIndex] = useState(0);
+  const [showNewsPopup, setShowNewsPopup] = useState(false);
 
   const aboutCards = [
     {
@@ -46,6 +47,33 @@ export default function Home() {
 
   const closeMobileMenu = () => {
     mobileMenuRef.current?.removeAttribute("open");
+  };
+
+  useEffect(() => {
+    try {
+      const hasSeenPopup = window.localStorage.getItem(
+        "spinculture-advanced-factories-popup-seen",
+      );
+
+      if (!hasSeenPopup) {
+        setShowNewsPopup(true);
+      }
+    } catch {
+      setShowNewsPopup(true);
+    }
+  }, []);
+
+  const closeNewsPopup = () => {
+    try {
+      window.localStorage.setItem(
+        "spinculture-advanced-factories-popup-seen",
+        "true",
+      );
+    } catch {
+      // Ignore storage errors and still close the popup locally.
+    }
+
+    setShowNewsPopup(false);
   };
 
   const toggleAboutCard = (cardId: string) => {
@@ -123,14 +151,8 @@ export default function Home() {
 
   return (
     <main id="top" className="bg-white text-[#014b5c]">
-      <input
-        id="advanced-factories-popup"
-        type="checkbox"
-        defaultChecked
-        className="peer sr-only"
-      />
-
-      <div className="pointer-events-none fixed inset-0 z-[120] flex items-center justify-center bg-[#014b5c]/56 px-6 py-8 opacity-0 transition duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100 sm:px-4">
+      {showNewsPopup ? (
+        <div className="fixed inset-0 z-[120] flex items-center justify-center bg-[#014b5c]/56 px-6 py-8 transition duration-300 sm:px-4">
         <div className="relative grid max-h-[82vh] w-full max-w-[20rem] gap-0 overflow-hidden overflow-y-auto rounded-[1.75rem] border border-[#98dbe8] bg-white shadow-[0_30px_90px_rgba(1,75,92,0.32)] sm:max-h-[88vh] sm:max-w-[28rem] lg:max-h-none lg:max-w-4xl lg:grid-cols-[1.05fr_0.95fr]">
           <div className="order-2 flex flex-col justify-center px-5 py-5 sm:px-8 sm:py-8 lg:order-1 lg:px-10 lg:py-10">
             <p className="text-sm font-medium uppercase tracking-[0.28em] text-[#028aac]">
@@ -154,17 +176,19 @@ export default function Home() {
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <a
                 href="/news/advanced-factories-xarfa"
+                onClick={closeNewsPopup}
                 className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#028aac] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#017996]"
               >
                 Read news
               </a>
 
-              <label
-                htmlFor="advanced-factories-popup"
+              <button
+                type="button"
+                onClick={closeNewsPopup}
                 className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border border-[#028aac] px-6 py-3 text-sm font-semibold text-[#028aac] transition hover:bg-[#eefbfd]"
               >
                 Continue to website
-              </label>
+              </button>
             </div>
           </div>
 
@@ -180,15 +204,17 @@ export default function Home() {
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,138,172,0.06),rgba(1,75,92,0.16))]" />
           </div>
 
-          <label
-            htmlFor="advanced-factories-popup"
+          <button
+            type="button"
+            onClick={closeNewsPopup}
             className="absolute right-3 top-3 z-10 inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/80 bg-white/96 text-xl font-light text-[#014b5c] shadow-sm transition hover:bg-[#eefbfd] sm:right-4 sm:top-4"
             aria-label="Close popup"
           >
             ×
-          </label>
+          </button>
         </div>
       </div>
+      ) : null}
 
       <header className="sticky top-0 z-50 border-b border-[#b9e7f0] bg-white/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-6 py-4">
@@ -758,15 +784,6 @@ export default function Home() {
           </div>
 
           <div className="mt-14">
-            <div className="mb-5 text-center">
-              <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#028aac]">
-                Swipe or scroll
-              </p>
-              <p className="mt-2 text-sm text-[#4d8a97]">
-                Explore our services
-              </p>
-            </div>
-
             <div className="mb-6 flex justify-center">
               <div className="flex items-center gap-2">
                 {[0, 1, 2, 3, 4].map((index) => (
@@ -1143,7 +1160,7 @@ export default function Home() {
           </p>
 
           <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
-            Let's build something meaningful together
+            Let&apos;s build something meaningful together
           </h2>
 
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d8f2f7] md:text-justify">
@@ -1151,14 +1168,89 @@ export default function Home() {
             explore ideas, collaborations, or future opportunities.
           </p>
 
-          <div className="mt-10">
-            <a
-              href="mailto:hello@spinculture3d.com"
-              className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-medium text-[#014b5c] transition hover:bg-[#eefbfd]"
-            >
-              hello@spinculture3d.com
-            </a>
-          </div>
+          <form
+            action="mailto:ecasanovab@gmail.com?subject=SpinCulture3D%20contact%20form"
+            method="post"
+            encType="text/plain"
+            className="mt-10 grid gap-5 rounded-[2rem] border border-[#98dbe8]/35 bg-white/10 p-6 shadow-[0_24px_55px_rgba(0,0,0,0.14)] backdrop-blur-sm md:grid-cols-2 md:p-8"
+          >
+            <label className="grid gap-2 text-sm font-medium text-[#e7fbff]">
+              Name
+              <input
+                type="text"
+                name="Name"
+                required
+                autoComplete="given-name"
+                className="min-h-12 rounded-2xl border border-[#98dbe8]/45 bg-white px-4 text-base text-[#014b5c] outline-none transition placeholder:text-[#6b9aa4] focus:border-white focus:ring-4 focus:ring-white/20"
+              />
+            </label>
+
+            <label className="grid gap-2 text-sm font-medium text-[#e7fbff]">
+              Last name
+              <input
+                type="text"
+                name="Last name"
+                required
+                autoComplete="family-name"
+                className="min-h-12 rounded-2xl border border-[#98dbe8]/45 bg-white px-4 text-base text-[#014b5c] outline-none transition placeholder:text-[#6b9aa4] focus:border-white focus:ring-4 focus:ring-white/20"
+              />
+            </label>
+
+            <label className="grid gap-2 text-sm font-medium text-[#e7fbff]">
+              Center of work
+              <input
+                type="text"
+                name="Center of work"
+                required
+                autoComplete="organization"
+                className="min-h-12 rounded-2xl border border-[#98dbe8]/45 bg-white px-4 text-base text-[#014b5c] outline-none transition placeholder:text-[#6b9aa4] focus:border-white focus:ring-4 focus:ring-white/20"
+              />
+            </label>
+
+            <label className="grid gap-2 text-sm font-medium text-[#e7fbff]">
+              Email
+              <input
+                type="email"
+                name="Email"
+                required
+                autoComplete="email"
+                className="min-h-12 rounded-2xl border border-[#98dbe8]/45 bg-white px-4 text-base text-[#014b5c] outline-none transition placeholder:text-[#6b9aa4] focus:border-white focus:ring-4 focus:ring-white/20"
+              />
+            </label>
+
+            <label className="grid gap-2 text-sm font-medium text-[#e7fbff] md:col-span-2">
+              Telephone <span className="text-[#b8e7ef]">(optional)</span>
+              <input
+                type="tel"
+                name="Telephone"
+                autoComplete="tel"
+                className="min-h-12 rounded-2xl border border-[#98dbe8]/45 bg-white px-4 text-base text-[#014b5c] outline-none transition placeholder:text-[#6b9aa4] focus:border-white focus:ring-4 focus:ring-white/20"
+              />
+            </label>
+
+            <label className="grid gap-2 text-sm font-medium text-[#e7fbff] md:col-span-2">
+              Message
+              <textarea
+                name="Message"
+                required
+                rows={6}
+                className="min-h-36 resize-y rounded-2xl border border-[#98dbe8]/45 bg-white px-4 py-3 text-base text-[#014b5c] outline-none transition placeholder:text-[#6b9aa4] focus:border-white focus:ring-4 focus:ring-white/20"
+              />
+            </label>
+
+            <div className="flex flex-col gap-3 md:col-span-2 md:flex-row md:items-center md:justify-between">
+              <p className="text-sm leading-6 text-[#d8f2f7]">
+                The form will open an email addressed to ecasanovab@gmail.com.
+              </p>
+
+              <button
+                type="submit"
+                className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#014b5c] transition hover:bg-[#eefbfd]"
+              >
+                Send message
+              </button>
+            </div>
+          </form>
         </div>
       </section>
 
