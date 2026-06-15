@@ -966,8 +966,14 @@ export default function Home() {
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             <article className="rounded-[2rem] border border-[#b9e7f0] bg-[#f4fcfd] p-8 shadow-sm">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-sm font-semibold text-[#028aac] shadow-sm">
-                BE
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                <Image
+                  src="/Enric_foto.jpeg"
+                  alt="Enric working in the laboratory"
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
               </div>
               <p className="mt-6 text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
                 Team Member
@@ -983,8 +989,14 @@ export default function Home() {
             </article>
 
             <article className="rounded-[2rem] border border-[#b9e7f0] bg-[#f4fcfd] p-8 shadow-sm">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-sm font-semibold text-[#028aac] shadow-sm">
-                BI
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                <Image
+                  src="/Sira_foto.jpeg"
+                  alt="Sira working in the laboratory"
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
               </div>
               <p className="mt-6 text-sm font-medium uppercase tracking-[0.18em] text-[#028aac]">
                 Team Member
