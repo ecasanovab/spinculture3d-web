@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   const servicesCarouselRef = useRef<HTMLDivElement | null>(null);
@@ -927,20 +928,48 @@ export default function Home() {
 
           <div className="mt-4">
             <h2 className="text-3xl font-semibold md:text-4xl">
-              Product section coming soon
+              The SpinWell platform
             </h2>
             <p className="mt-4 max-w-2xl text-[#216674] md:text-justify">
-              This area is intentionally reserved for future product
-              definitions, prototypes, and structured offers.
+              Explore our electrospun culture platforms in formats designed to
+              fit a range of experimental workflows.
             </p>
           </div>
 
-          <div className="mt-12 rounded-[2rem] border border-dashed border-[#8ad5e5] bg-white p-10">
-            <p className="max-w-3xl text-lg leading-8 text-[#216674] md:text-justify">
-              Once products are defined, this section can host catalog cards,
-              scientific platform summaries, downloadable materials, or direct
-              links to individual product pages.
-            </p>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { name: "SpinWell-6", wells: "6-well format" },
+              { name: "SpinWell-12", wells: "12-well format" },
+              { name: "SpinWell-24", wells: "24-well format" },
+              { name: "SpinWell-48", wells: "48-well format" },
+            ].map((product) => (
+              <article
+                key={product.name}
+                className="overflow-hidden rounded-[2rem] border border-[#b9e7f0] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#eefbfd]">
+                  <Image
+                    src="/producte_6wells.png"
+                    alt={`${product.name} electrospun cell culture platform`}
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-contain object-center"
+                  />
+                </div>
+
+                <div className="p-6">
+                  <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#028aac]">
+                    SpinWell
+                  </p>
+                  <h3 className="mt-3 text-2xl font-semibold text-[#014b5c]">
+                    {product.name}
+                  </h3>
+                  <p className="mt-3 text-sm text-[#216674]">
+                    {product.wells}
+                  </p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -1073,28 +1102,23 @@ export default function Home() {
         id="contact"
         className="border-t border-[#b9e7f0] bg-[#014b5c] px-6 py-24 text-white"
       >
-        <div className="mx-auto max-w-5xl">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#98dbe8]">
-            Contact
-          </p>
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <div>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#98dbe8]">
+              Contact
+            </p>
 
-          <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
-            Let&apos;s build something meaningful together
-          </h2>
+            <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">
+              Let&apos;s build something meaningful together
+            </h2>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d8f2f7] md:text-justify">
-            We are shaping the first version of SpinCulture3D. Get in touch to
-            explore ideas, collaborations, or future opportunities.
-          </p>
-
-          <div className="mt-10">
-            <a
-              href="mailto:hello@spinculture3d.com"
-              className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-medium text-[#014b5c] transition hover:bg-[#eefbfd]"
-            >
-              hello@spinculture3d.com
-            </a>
+            <p className="mt-6 text-lg leading-8 text-[#d8f2f7] md:text-justify">
+              We are shaping the first version of SpinCulture3D. Get in touch to
+              explore ideas, collaborations, or future opportunities.
+            </p>
           </div>
+
+          <ContactForm />
         </div>
       </section>
 
