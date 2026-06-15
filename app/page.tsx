@@ -938,10 +938,26 @@ export default function Home() {
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { name: "SpinWell-6", wells: "6-well format" },
-              { name: "SpinWell-12", wells: "12-well format" },
-              { name: "SpinWell-24", wells: "24-well format" },
-              { name: "SpinWell-48", wells: "48-well format" },
+              {
+                name: "SpinWell-6",
+                wells: "6-well format",
+                image: "/producte_6wells.png",
+              },
+              {
+                name: "SpinWell-12",
+                wells: "12-well format",
+                image: "/producte_12wells.png",
+              },
+              {
+                name: "SpinWell-24",
+                wells: "24-well format",
+                image: "/producte_24wells.png",
+              },
+              {
+                name: "SpinWell-48",
+                wells: "48-well format",
+                image: "/producte_48wells.png",
+              },
             ].map((product) => (
               <article
                 key={product.name}
@@ -949,7 +965,7 @@ export default function Home() {
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-[#eefbfd]">
                   <Image
-                    src="/producte_6wells.png"
+                    src={product.image}
                     alt={`${product.name} electrospun cell culture platform`}
                     fill
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
