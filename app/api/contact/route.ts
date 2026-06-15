@@ -18,10 +18,17 @@ export async function POST(request: Request) {
       process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev";
 
     if (!apiKey || !toEmail) {
-      console.error("Missing Resend environment variables.");
+      const missingVariables = [
+        !apiKey ? "RESEND_API_KEY" : null,
+        !toEmail ? "CONTACT_TO_EMAIL" : null,
+      ].filter((variable): variable is string => variable !== null);
+
+      console.error("Missing Resend environment variables:", missingVariables);
 
       return NextResponse.json(
-        { error: "Email service is not configured." },
+        {
+          error: `Email service is not configured. Missing: ${missingVariables.join(", ")}.`,
+        },
         { status: 500 },
       );
     }
