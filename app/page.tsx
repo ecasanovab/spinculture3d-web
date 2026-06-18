@@ -1,8 +1,10 @@
 ﻿"use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef, useState } from "react";
 import ContactForm from "@/components/ContactForm";
+import { products } from "@/lib/products";
 
 export default function Home() {
   const servicesCarouselRef = useRef<HTMLDivElement | null>(null);
@@ -937,31 +939,11 @@ export default function Home() {
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                name: "SpinWell-6",
-                wells: "6-well format",
-                image: "/producte_6wells.png",
-              },
-              {
-                name: "SpinWell-12",
-                wells: "12-well format",
-                image: "/producte_12wells.png",
-              },
-              {
-                name: "SpinWell-24",
-                wells: "24-well format",
-                image: "/producte_24wells.png",
-              },
-              {
-                name: "SpinWell-48",
-                wells: "48-well format",
-                image: "/producte_48wells.png",
-              },
-            ].map((product) => (
-              <article
+            {products.map((product) => (
+              <Link
                 key={product.name}
-                className="overflow-hidden rounded-[2rem] border border-[#b9e7f0] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                href={`/products/${product.slug}`}
+                className="group overflow-hidden rounded-[2rem] border border-[#b9e7f0] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-[#eefbfd]">
                   <Image
@@ -983,8 +965,11 @@ export default function Home() {
                   <p className="mt-3 text-sm text-[#216674]">
                     {product.wells}
                   </p>
+                  <p className="mt-5 text-sm font-medium text-[#028aac] transition group-hover:text-[#014b5c]">
+                    View specifications
+                  </p>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
