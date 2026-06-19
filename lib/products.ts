@@ -21,10 +21,10 @@ export const products: Product[] = [
     image: "/producte_6wells_homogeneitzada.png",
     filamentImage: "/6-well_filaments.png",
     pricingPacks: [
-      { quantity: "10 scaffolds", discount: "Base price", price: "15.00 EUR" },
-      { quantity: "30 scaffolds", discount: "5% per unit", price: "40.00 EUR" },
-      { quantity: "50 scaffolds", discount: "7.5% per unit", price: "65.00 EUR" },
-      { quantity: "100 scaffolds", discount: "10% per unit", price: "125.00 EUR" },
+      { quantity: "10 scaffolds", discount: "Base price", price: "Upon request" },
+      { quantity: "30 scaffolds", discount: "5% per unit", price: "Upon request" },
+      { quantity: "50 scaffolds", discount: "7.5% per unit", price: "Upon request" },
+      { quantity: "100 scaffolds", discount: "10% per unit", price: "Upon request" },
     ],
   },
   {
@@ -35,10 +35,10 @@ export const products: Product[] = [
     image: "/producte_12wells.png",
     filamentImage: "/12-well_filaments.png",
     pricingPacks: [
-      { quantity: "10 scaffolds", discount: "Base price", price: "10.00 EUR" },
-      { quantity: "30 scaffolds", discount: "5% per unit", price: "27.50 EUR" },
-      { quantity: "50 scaffolds", discount: "7.5% per unit", price: "45.00 EUR" },
-      { quantity: "100 scaffolds", discount: "10% per unit", price: "90.00 EUR" },
+      { quantity: "10 scaffolds", discount: "Base price", price: "Upon request" },
+      { quantity: "30 scaffolds", discount: "5% per unit", price: "Upon request" },
+      { quantity: "50 scaffolds", discount: "7.5% per unit", price: "Upon request" },
+      { quantity: "100 scaffolds", discount: "10% per unit", price: "Upon request" },
     ],
   },
   {
@@ -49,10 +49,10 @@ export const products: Product[] = [
     image: "/producte_24wells.png",
     filamentImage: "/12-well_filaments.png",
     pricingPacks: [
-      { quantity: "10 scaffolds", discount: "Base price", price: "7.50 EUR" },
-      { quantity: "30 scaffolds", discount: "5% per unit", price: "15.00 EUR" },
-      { quantity: "50 scaffolds", discount: "7.5% per unit", price: "25.00 EUR" },
-      { quantity: "100 scaffolds", discount: "10% per unit", price: "50.00 EUR" },
+      { quantity: "10 scaffolds", discount: "Base price", price: "Upon request" },
+      { quantity: "30 scaffolds", discount: "5% per unit", price: "Upon request" },
+      { quantity: "50 scaffolds", discount: "7.5% per unit", price: "Upon request" },
+      { quantity: "100 scaffolds", discount: "10% per unit", price: "Upon request" },
     ],
   },
   {
@@ -63,10 +63,10 @@ export const products: Product[] = [
     image: "/producte_48wells.png",
     filamentImage: "/48-well_filaments.png",
     pricingPacks: [
-      { quantity: "10 scaffolds", discount: "Base price", price: "7.50 EUR" },
-      { quantity: "30 scaffolds", discount: "5% per unit", price: "15.00 EUR" },
-      { quantity: "50 scaffolds", discount: "7.5% per unit", price: "25.00 EUR" },
-      { quantity: "100 scaffolds", discount: "10% per unit", price: "50.00 EUR" },
+      { quantity: "10 scaffolds", discount: "Base price", price: "Upon request" },
+      { quantity: "30 scaffolds", discount: "5% per unit", price: "Upon request" },
+      { quantity: "50 scaffolds", discount: "7.5% per unit", price: "Upon request" },
+      { quantity: "100 scaffolds", discount: "10% per unit", price: "Upon request" },
     ],
   },
 ];
